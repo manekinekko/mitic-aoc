@@ -1,81 +1,96 @@
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.GridLayout;
 
+import javax.swing.Box;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSlider;
+import javax.swing.JTextField;
+import javax.swing.text.JTextComponent;
 
 
 public class IHM extends JFrame{
 
 	public IHM(){
-		super("Métronome");
-		
-		Dimension taille = new Dimension(640, 360);
-		
-		setSize(taille);
-		setPreferredSize(taille);
+		super("Metronome");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		ajouterElements();
+		Box vBox = Box.createVerticalBox();
+		Box hBox1 = Box.createHorizontalBox();
+		Box hBox2 = Box.createHorizontalBox();
+		
+		JSlider tempo = new JSlider(40, 210, 40);
+		JTextField afficheur = new JTextField("40");
+		afficheur.setPreferredSize(new Dimension(120, 50));
+		afficheur.setEditable(false);
+		afficheur.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 25));
+		afficheur.setHorizontalAlignment(JTextField.CENTER);
+		afficheur.setBackground(Color.black);
+		afficheur.setForeground(Color.white);
+	
+		
+		LED led1 = new LED(Color.RED);
+		LED led2 = new LED(Color.RED);
+		
+		JLabel labelLed1 = new JLabel("Led 1");
+		labelLed1.setAlignmentX(CENTER_ALIGNMENT);
+		JLabel labelLed2 = new JLabel("Led 2");
+		labelLed2.setAlignmentX(CENTER_ALIGNMENT);
+		
+		JButton start = new JButton("START");
+		JButton stop = new JButton("STOP");
+		JButton inc = new JButton("INC");
+		JButton dec = new JButton("DEC");
+		
+		vBox.add(Box.createVerticalGlue());
+		vBox.add(hBox1);
+		vBox.add(Box.createVerticalGlue());
+		vBox.add(hBox2);
+		
+		hBox1.add(Box.createHorizontalGlue());
+		hBox1.add(Box.createHorizontalStrut(5));
+		hBox1.add(tempo);
+		hBox1.add(afficheur);
+		
+		JPanel ledPanel = new JPanel();
+		ledPanel.setLayout(new GridLayout(2,2));
+		
+		ledPanel.add(led1);
+		ledPanel.add(labelLed1);
+		ledPanel.add(led2);
+		ledPanel.add(labelLed2);
+		
+		hBox1.add(ledPanel);
+		hBox1.add(Box.createHorizontalGlue());
+		hBox1.add(Box.createHorizontalStrut(5));
+		
+		hBox1.add(Box.createHorizontalGlue());
+		hBox2.add(start);
+		hBox2.add(stop);
+		hBox2.add(inc);
+		hBox2.add(dec);
+		hBox1.add(Box.createHorizontalGlue());
+		
+		add(vBox);
 		
 		pack();
 		setVisible(true);
-	}
-	
-	public void ajouterElements(){
-		
-		setLayout(new GridLayout(3, 1));
-		
-
-		JPanel monPanel1 = new JPanel();
-		
-
-		monPanel1.add(new Afficheur("0"));
-		
-		JPanel ledPanel = new JPanel();
-		ledPanel.setLayout(new GridLayout(2, 2, 2, 2));
-		ledPanel.add(new LED(Color.RED, "LED 1"));
-		ledPanel.add(new JLabel("LED 1"));
-		ledPanel.add(new LED(Color.RED, "LED 2"));
-		ledPanel.add(new JLabel("LED 2"));
-		monPanel1.add(ledPanel);
-		
-		JPanel monPanel2 = new JPanel();
-		monPanel2.add(creerBouton("START"));
-		monPanel2.add(creerBouton("STOP"));
-		monPanel2.add(creerBouton("INC"));
-		monPanel2.add(creerBouton("DEC"));
-		
-		add(monPanel1);
-		add(new JSlider(10, 200, 10));
-		add(monPanel2);
-	}
-	
-	public JPanel creerBouton(String nom) {
-		JPanel monBoutonPanel = new JPanel();
-		JButton monBouton = new JButton(nom);
-		monBoutonPanel.add(monBouton);
-//		monBouton.setSize();
-		return monBoutonPanel;
-	}
-	
-	public JPanel creerLED(){
-		
-		JPanel led = new JPanel();
-		
-		
-		
-		
-		return led;
+		setMinimumSize(new Dimension(hBox2.getPreferredSize().width + 10, 
+				hBox1.getPreferredSize().height+hBox2.getPreferredSize().height + 10));
 		
 	}
 	
+	
+	/**
+	 * @param args
+	 */
 	public static void main(String[] args) {
-		new IHM();
+		IHM ihm = new IHM();
+
 	}
-	
+
 }
