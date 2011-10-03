@@ -12,11 +12,17 @@ import javax.swing.JSlider;
 import javax.swing.JTextField;
 import javax.swing.text.JTextComponent;
 
-
 public class IHM extends JFrame{
+
+	// la valeur de l'afficheur
+	private String valeurAfficheur_;
+
 
 	public IHM(){
 		super("Metronome");
+		
+		valeurAfficheur_ = "0";
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		Box vBox = Box.createVerticalBox();
@@ -24,7 +30,7 @@ public class IHM extends JFrame{
 		Box hBox2 = Box.createHorizontalBox();
 		
 		JSlider tempo = new JSlider(40, 210, 40);
-		JTextField afficheur = new JTextField("40");
+		JTextField afficheur = new JTextField(this.valeurAfficheur_);
 		afficheur.setPreferredSize(new Dimension(120, 50));
 		afficheur.setEditable(false);
 		afficheur.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 25));
@@ -84,13 +90,12 @@ public class IHM extends JFrame{
 		
 	}
 	
-	
-	/**
-	 * @param args
-	 */
+	public void setValeur(int valeur){
+		valeurAfficheur_ = ""+valeur;
+	}
+
 	public static void main(String[] args) {
 		IHM ihm = new IHM();
-
 	}
 
 }
