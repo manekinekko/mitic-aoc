@@ -1,3 +1,4 @@
+package metronome;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -5,12 +6,12 @@ import java.awt.Graphics;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class Afficheur extends JPanel {
+public class LCD extends JPanel implements IAfficheur {
 
 	private static final long serialVersionUID = 1L;
 	private String message_;
 	
-	public Afficheur(String message){
+	public LCD(String message){
 		
 		super();
 		message_ = message;
@@ -24,6 +25,24 @@ public class Afficheur extends JPanel {
 		super.paint(g);
 		g.setColor(Color.gray);
 		g.fillRect(0, 0, getWidth(), getHeight());
+		
+	}
+
+	@Override
+	public void allumerLed(int numLed) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void eteindreLed(int numLed) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void afficherTempo(int tempo) {
+		// TODO Auto-generated method stub
 		
 	}
 	

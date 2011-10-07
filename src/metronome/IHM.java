@@ -1,3 +1,4 @@
+package metronome;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -12,14 +13,19 @@ import javax.swing.JSlider;
 import javax.swing.JTextField;
 import javax.swing.text.JTextComponent;
 
-public class IHM extends JFrame{
+import command.CommandeDemarer;
+import command.ICommand;
+
+public class IHM extends JFrame implements IIHM {
 
 	// la valeur de l'afficheur
 	private String valeurAfficheur_;
+	private ICommand commandeDemarrer_;
 
 
 	public IHM(){
 		super("Metronome");
+		commandeDemarrer_ = new CommandeDemarer();
 		
 		valeurAfficheur_ = "0";
 		
