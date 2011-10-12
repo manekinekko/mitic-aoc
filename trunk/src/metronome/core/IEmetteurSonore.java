@@ -1,4 +1,4 @@
-package metronome;
+package metronome.core;
 
 public interface IEmetteurSonore {
 

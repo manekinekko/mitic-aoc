@@ -1,5 +1,5 @@
-package metronome;
-import command.ICommand;
+package metronome.core;
+import metronome.command.ICommand;
 
 
 public interface IHorloge {

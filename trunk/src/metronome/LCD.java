@@ -6,7 +6,7 @@ import java.awt.Graphics;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class LCD extends JPanel implements IAfficheur {
+public class LCD extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	private String message_;
@@ -28,22 +28,4 @@ public class LCD extends JPanel implements IAfficheur {
 		
 	}
 
-	@Override
-	public void allumerLed(int numLed) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void eteindreLed(int numLed) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void afficherTempo(int tempo) {
-		// TODO Auto-generated method stub
-		
-	}
-	
 }
