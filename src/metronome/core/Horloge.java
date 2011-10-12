@@ -1,13 +1,18 @@
-package metronome;
-import command.ICommand;
+package metronome.core;
+
+import metronome.command.ICommand;
 
 
 public class Horloge implements IHorloge {
 
+	private Thread horloge_;
+	
+	public Horloge() {}
+	
 	@Override
 	public void activerPeriodiquement(ICommand cmd, float periodeEnSeconde) {
-		// TODO Auto-generated method stub
-
+		horloge_ = new HorlogePeriodique(cmd, periodeEnSeconde);
+		horloge_.start();
 	}
 
 	@Override
@@ -18,8 +23,7 @@ public class Horloge implements IHorloge {
 
 	@Override
 	public void desactiver(ICommand cmd) {
-		// TODO Auto-generated method stub
-
+		horloge_.interrupt();
 	}
-
+	
 }

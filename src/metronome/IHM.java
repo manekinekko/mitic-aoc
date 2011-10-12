@@ -1,4 +1,5 @@
 package metronome;
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -11,97 +12,149 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSlider;
 import javax.swing.JTextField;
-import javax.swing.text.JTextComponent;
 
-import command.CommandeDemarer;
-import command.ICommand;
+import metronome.command.CommandeChangeListener;
+import metronome.command.CommandeMouseListener;
 
 public class IHM extends JFrame implements IIHM {
 
-	// la valeur de l'afficheur
-	private String valeurAfficheur_;
-	private ICommand commandeDemarrer_;
+	private static final long serialVersionUID = 1L;
+	private JTextField lcd_;
+	private LED led1_, led2_;
+	private JButton demarrer_, stop_, inc_, dec_;
+	private JSlider tempo_;
+	private IControleur controleur_;
 
-
-	public IHM(){
+	public IHM(IControleur controleur) {
 		super("Metronome");
-		commandeDemarrer_ = new CommandeDemarer();
-		
-		valeurAfficheur_ = "0";
-		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
+		controleur_ = controleur;
+		construireIHM_();
+	}
+
+	private void construireIHM_() {
+
 		Box vBox = Box.createVerticalBox();
 		Box hBox1 = Box.createHorizontalBox();
 		Box hBox2 = Box.createHorizontalBox();
-		
-		JSlider tempo = new JSlider(40, 210, 40);
-		JTextField afficheur = new JTextField(this.valeurAfficheur_);
-		afficheur.setPreferredSize(new Dimension(120, 50));
-		afficheur.setEditable(false);
-		afficheur.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 25));
-		afficheur.setHorizontalAlignment(JTextField.CENTER);
-		afficheur.setBackground(Color.black);
-		afficheur.setForeground(Color.white);
-	
-		
-		LED led1 = new LED(Color.RED);
-		LED led2 = new LED(Color.RED);
-		
+
+		tempo_ = new JSlider(1, 100, 1);
+		tempo_.addChangeListener(new CommandeChangeListener(
+				MetronomeCommandeFactory.creerCommandeSlider(controleur_)));
+		tempo_.setEnabled(false);
+
+		lcd_ = new JTextField("0");
+		lcd_.setPreferredSize(new Dimension(120, 50));
+		lcd_.setEditable(false);
+		lcd_.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 25));
+		lcd_.setHorizontalAlignment(JTextField.CENTER);
+		lcd_.setBackground(Color.black);
+		lcd_.setForeground(Color.white);
+
+		led1_ = new LED(Color.RED);
+		led2_ = new LED(Color.RED);
+
 		JLabel labelLed1 = new JLabel("Led 1");
 		labelLed1.setAlignmentX(CENTER_ALIGNMENT);
 		JLabel labelLed2 = new JLabel("Led 2");
 		labelLed2.setAlignmentX(CENTER_ALIGNMENT);
-		
-		JButton start = new JButton("START");
-		JButton stop = new JButton("STOP");
-		JButton inc = new JButton("INC");
-		JButton dec = new JButton("DEC");
-		
+
+		demarrer_ = new JButton("START");
+		stop_ = new JButton("STOP");
+		inc_ = new JButton("INC");
+		dec_ = new JButton("DEC");
+
+		demarrer_.addMouseListener(new CommandeMouseListener(
+				MetronomeCommandeFactory.creerCommandeDemarrer(controleur_)));
+		stop_.addMouseListener(new CommandeMouseListener(
+				MetronomeCommandeFactory.creerCommandeStop(controleur_)));
+		inc_.addMouseListener(new CommandeMouseListener(
+				MetronomeCommandeFactory.creerCommandeInc(controleur_)));
+		dec_.addMouseListener(new CommandeMouseListener(
+				MetronomeCommandeFactory.creerCommandeDec(controleur_)));
+
+		stop_.setEnabled(false);
+		inc_.setEnabled(false);
+		dec_.setEnabled(false);
+
 		vBox.add(Box.createVerticalGlue());
 		vBox.add(hBox1);
 		vBox.add(Box.createVerticalGlue());
 		vBox.add(hBox2);
-		
+
 		hBox1.add(Box.createHorizontalGlue());
 		hBox1.add(Box.createHorizontalStrut(5));
-		hBox1.add(tempo);
-		hBox1.add(afficheur);
-		
+		hBox1.add(tempo_);
+		hBox1.add(lcd_);
+
 		JPanel ledPanel = new JPanel();
-		ledPanel.setLayout(new GridLayout(2,2));
-		
-		ledPanel.add(led1);
+		ledPanel.setLayout(new GridLayout(2, 2));
+
+		ledPanel.add(led1_);
 		ledPanel.add(labelLed1);
-		ledPanel.add(led2);
+		ledPanel.add(led2_);
 		ledPanel.add(labelLed2);
-		
+
 		hBox1.add(ledPanel);
 		hBox1.add(Box.createHorizontalGlue());
 		hBox1.add(Box.createHorizontalStrut(5));
-		
+
 		hBox1.add(Box.createHorizontalGlue());
-		hBox2.add(start);
-		hBox2.add(stop);
-		hBox2.add(inc);
-		hBox2.add(dec);
+		hBox2.add(demarrer_);
+		hBox2.add(stop_);
+		hBox2.add(inc_);
+		hBox2.add(dec_);
 		hBox1.add(Box.createHorizontalGlue());
-		
+
 		add(vBox);
-		
+
 		pack();
 		setVisible(true);
-		setMinimumSize(new Dimension(hBox2.getPreferredSize().width + 10, 
-				hBox1.getPreferredSize().height+hBox2.getPreferredSize().height + 10));
-		
-	}
-	
-	public void setValeur(int valeur){
-		valeurAfficheur_ = ""+valeur;
+		setMinimumSize(new Dimension(hBox2.getPreferredSize().width + 10,
+				hBox1.getPreferredSize().height
+						+ hBox2.getPreferredSize().height + 10));
 	}
 
-	public static void main(String[] args) {
-		IHM ihm = new IHM();
+	public void afficherTempo(int valeur) {
+		lcd_.setText("" + valeur);
+	}
+
+	public JButton getBoutonDemarrer() {
+		return demarrer_;
+	}
+
+	public JButton getBoutonStop() {
+		return stop_;
+	}
+
+	public JButton getBoutonInc() {
+		return inc_;
+	}
+
+	public JButton getBoutonDec() {
+		return dec_;
+	}
+
+	public JSlider getSlider() {
+		return tempo_;
+	}
+
+	public void setEtatBouton(JButton bouton, boolean etat) {
+		bouton.setEnabled(etat);
+	}
+
+	public void setEtatSlider(JSlider slider, boolean etat) {
+		slider.setEnabled(etat);
+	}
+
+	@Override
+	public void flasherLED() {
+		led1_.flasher();
+	}
+
+	@Override
+	public void emettre() {
+		MetronomeCommandeFactory.creerEmetteurSonore().emettreClick();
 	}
 
 }

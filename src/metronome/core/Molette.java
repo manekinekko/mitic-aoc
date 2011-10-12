@@ -1,4 +1,4 @@
-package metronome;
+package metronome.core;
 
 public class Molette implements IMolette {
 

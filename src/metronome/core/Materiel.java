@@ -1,4 +1,10 @@
-package metronome;
+package metronome.core;
+
+import metronome.Clavier;
+import metronome.IAfficheur;
+import metronome.IClavier;
+import metronome.IHM;
+import metronome.IIHM;
 
 public class Materiel {
 	
@@ -6,7 +12,7 @@ public class Materiel {
 	private static IClavier clavier_;
 	private static IMolette molette_;
 	private static IEmetteurSonore emetteurSonore_;
-	private static IIHM ihm_;
+	private static IAfficheur afficheur_;
 	
 	private Materiel(){}
 	
@@ -38,11 +44,11 @@ public class Materiel {
 		
 		return emetteurSonore_;
 	}
-	public static IIHM getAfficheur(){
-		if ( ihm_ == null ){
-			ihm_ = new IHM();
+	public static IAfficheur getAfficheur(){
+		if ( afficheur_ == null ){
+			afficheur_ = new Afficheur();
 		}
 		
-		return ihm_;
+		return afficheur_;
 	}
 }

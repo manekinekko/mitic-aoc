@@ -1,4 +1,7 @@
-package metronome;
+package metronome.core;
+
+import metronome.IControleur;
+
 public interface IMoteurMetronome {
 
 	public int getTempo();
