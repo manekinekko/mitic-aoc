@@ -15,6 +15,7 @@ import javax.swing.JTextField;
 
 import metronome.command.CommandeChangeListener;
 import metronome.command.CommandeMouseListener;
+import metronome.core.EmetteurSonore;
 
 public class IHM extends JFrame implements IIHM {
 
@@ -41,7 +42,7 @@ public class IHM extends JFrame implements IIHM {
 		tempo_ = new JSlider(1, 100, 1);
 		tempo_.addChangeListener(new CommandeChangeListener(
 				MetronomeCommandeFactory.creerCommandeSlider(controleur_)));
-		tempo_.setEnabled(false);
+		//tempo_.setEnabled(false);
 
 		lcd_ = new JTextField("0");
 		lcd_.setPreferredSize(new Dimension(120, 50));
@@ -154,7 +155,7 @@ public class IHM extends JFrame implements IIHM {
 
 	@Override
 	public void emettre() {
-		MetronomeCommandeFactory.creerEmetteurSonore().emettreClick();
+		(new EmetteurSonore()).emettreClick();
 	}
 
 }

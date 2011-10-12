@@ -22,8 +22,6 @@ public class LED extends JPanel implements ILED{
 		height_ = 16;
 		width_ = 16;
 		flashDelay_ = 1000;
-		ledRunnable_ = new LEDRunnable(this, flashDelay_);
-		ledRunnable_.start();
 	}
 	
 	public void paint(Graphics g){
@@ -41,12 +39,13 @@ public class LED extends JPanel implements ILED{
 	}
 	
 	@Override
-	public void setCouleur(Color couleur) {
+	public synchronized void setCouleur(Color couleur) {
 		couleur_ = couleur;
 	}
 
 	public void flasher() {
-		//ledRunnable_.start();
+		ledRunnable_ = new LEDRunnable(this, flashDelay_);
+		ledRunnable_.start();
 	}
 	
 }

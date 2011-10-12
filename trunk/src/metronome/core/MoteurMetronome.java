@@ -47,6 +47,7 @@ public class MoteurMetronome implements IMoteurMetronome {
 		controleur_.updateEtatMoteur();
 		
 		if ( etatMarche_ ){
+			System.out.println(tempo_);
 			horloge_.activerPeriodiquement(commandeTic_, tempo_);
 		}
 		else {
