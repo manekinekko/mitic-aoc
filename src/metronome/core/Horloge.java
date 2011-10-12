@@ -7,11 +7,15 @@ public class Horloge implements IHorloge {
 
 	private Thread horloge_;
 	
-	public Horloge() {}
+	public Horloge() {
+
+		horloge_ = new HorlogePeriodique();
+	}
 	
 	@Override
 	public void activerPeriodiquement(ICommand cmd, float periodeEnSeconde) {
-		horloge_ = new HorlogePeriodique(cmd, periodeEnSeconde);
+		((HorlogePeriodique)horloge_).setCommand(cmd);
+		((HorlogePeriodique)horloge_).setPeriodeEnSeconde(periodeEnSeconde);
 		horloge_.start();
 	}
 

@@ -1,6 +1,6 @@
 package metronome;
 
-public class Metronome {
+public class MetronomeBootstrap {
 
 	public static void main(String[] args) {
 		new Controleur();

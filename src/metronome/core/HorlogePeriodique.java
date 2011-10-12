@@ -12,6 +12,18 @@ public class HorlogePeriodique extends Thread {
 		periodeEnSeconde_ = periodeEnSeconde;
 	}
 
+	public HorlogePeriodique() {
+		
+	}
+
+	public void setPeriodeEnSeconde(float periodeEnSeconde_) {
+		this.periodeEnSeconde_ = periodeEnSeconde_;
+	}
+
+	public void setCommand(ICommand command_) {
+		this.command_ = command_;
+	}
+
 	@Override
 	public void run() {
 		while( !isInterrupted() ){
