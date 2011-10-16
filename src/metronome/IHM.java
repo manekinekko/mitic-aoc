@@ -25,12 +25,14 @@ public class IHM extends JFrame implements IIHM {
 	private JButton demarrer_, stop_, inc_, dec_;
 	private JSlider tempo_;
 	private IControleur controleur_;
+	private EmetteurSonore emetteur_;
 
 	public IHM(IControleur controleur) {
 		super("Metronome");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		controleur_ = controleur;
 		construireIHM_();
+		emetteur_ = new EmetteurSonore();
 	}
 
 	private void construireIHM_() {
@@ -39,7 +41,8 @@ public class IHM extends JFrame implements IIHM {
 		Box hBox1 = Box.createHorizontalBox();
 		Box hBox2 = Box.createHorizontalBox();
 
-		tempo_ = new JSlider(1, 100, 1);
+		tempo_ = new JSlider(40, 210, 40);
+		//TODO faire un update de la valeur du JSlider sur le moteur
 		tempo_.addChangeListener(new CommandeChangeListener(
 				MetronomeCommandeFactory.creerCommandeSlider(controleur_)));
 		//tempo_.setEnabled(false);
@@ -155,7 +158,7 @@ public class IHM extends JFrame implements IIHM {
 
 	@Override
 	public void emettre() {
-		(new EmetteurSonore()).emettreClick();
+		emetteur_.emettreClick();
 	}
 
 }
