@@ -50,19 +50,16 @@ public class Controleur implements IControleur{
 
 	@Override
 	public void updateCommandeInc() {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void updateCommandeDec() {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void updateCommandeMarqueurTemps() {
-		// TODO Auto-generated method stub
 		
 	}
 

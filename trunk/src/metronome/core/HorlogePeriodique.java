@@ -4,20 +4,20 @@ import metronome.command.ICommand;
 
 public class HorlogePeriodique extends Thread {
 
-	private float periodeEnSeconde_;
+	private float periodeEnSecondes_;
 	private ICommand command_;
 	
-	public HorlogePeriodique(ICommand command, float periodeEnSeconde) {
+	public HorlogePeriodique(ICommand command, float periodeEnSecondes) {
 		command_ = command;
-		periodeEnSeconde_ = periodeEnSeconde;
+		periodeEnSecondes_ = periodeEnSecondes;
 	}
 
 	public HorlogePeriodique() {
 		
 	}
 
-	public void setPeriodeEnSeconde(float periodeEnSeconde_) {
-		this.periodeEnSeconde_ = periodeEnSeconde_;
+	public void setPeriodeEnSecondes(float periodeEnSecondes_) {
+		this.periodeEnSecondes_ = periodeEnSecondes_;
 	}
 
 	public void setCommand(ICommand command_) {
@@ -29,7 +29,7 @@ public class HorlogePeriodique extends Thread {
 		while( !isInterrupted() ){
 			try {
 				command_.execute();
-				sleep((long)periodeEnSeconde_);
+				sleep((long)(periodeEnSecondes_*1000));
 				System.out.println("Tic");
 			} catch (InterruptedException e) {
 				interrupt();

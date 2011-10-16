@@ -22,7 +22,6 @@ public class MoteurMetronome implements IMoteurMetronome {
 		commandeMarqueurTemps_ = MetronomeCommandeFactory.creerCommandeMarqueurTemps(controleur_);
 		commandeTic_ = MetronomeCommandeFactory.creerCommandeTic(controleur_);
 		horloge_ = new Horloge();
-		
 	}
 
 	@Override
@@ -47,8 +46,7 @@ public class MoteurMetronome implements IMoteurMetronome {
 		controleur_.updateEtatMoteur();
 		
 		if ( etatMarche_ ){
-			System.out.println(tempo_);
-			horloge_.activerPeriodiquement(commandeTic_, tempo_);
+			horloge_.activerPeriodiquement(commandeTic_, (float)(60.0/tempo_));
 		}
 		else {
 			horloge_.desactiver(commandeTic_);
@@ -58,13 +56,11 @@ public class MoteurMetronome implements IMoteurMetronome {
 
 	@Override
 	public int getTempsParMesure() {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
 	public void setTempsParMesure(int tempsParMesure) {
-		// TODO Auto-generated method stub
 		
 	}
 
@@ -75,14 +71,10 @@ public class MoteurMetronome implements IMoteurMetronome {
 
 	@Override
 	public void attach(IControleur o) {
-		// TODO Auto-generated method stub
-
 	}
 
 	@Override
 	public void detach(IControleur o) {
-		// TODO Auto-generated method stub
-
 	}
 
 }
