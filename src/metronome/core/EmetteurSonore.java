@@ -1,51 +1,60 @@
 package metronome.core;
 
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioFormat;
-import javax.sound.sampled.DataLine.Info;
-import javax.sound.sampled.SourceDataLine;
-import javax.sound.sampled.AudioSystem;
-
 import java.io.File;
+import javax.sound.sampled.AudioFormat;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.SourceDataLine;
+import javax.sound.sampled.DataLine.Info;
 
-public class EmetteurSonore implements IEmetteurSonore{
+public class EmetteurSonore implements IEmetteurSonore {
 
-	public void readWavFile(final String fileName) {
-		Runnable runnableSound = new RunnableSound(fileName);
-		Thread thread = new Thread(runnableSound);
-		thread.start();      
+	String filename_;
+	AudioInputStream audioInputStream_;
+	AudioFormat audioFormat_;
+	Info info_;
+	SourceDataLine source_;
+
+	public EmetteurSonore() {
+		filename_ = "src/metronome/assets/tac.wav";
+		try {
+			audioInputStream_ = AudioSystem.getAudioInputStream(new File(filename_));
+			audioFormat_ = audioInputStream_.getFormat();
+			info_ = new Info(SourceDataLine.class, audioFormat_);
+			source_ = (SourceDataLine) AudioSystem.getLine(info_);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} 
+
 	}
-
-	class RunnableSound implements Runnable {
-
-		private String fileName;
+	
+	private class AudioPlayer extends Thread{
 		
-		public RunnableSound(String fileName) {
-			this.fileName = fileName;
-		}
-		
-		public void run() {
+		public void run(){
 			try {
-				AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(fileName));
-				AudioFormat format = audioInputStream.getFormat();
-				Info info = new Info(SourceDataLine.class, format);
-				SourceDataLine source = (SourceDataLine)AudioSystem.getLine(info);
-				source.open(format);
-				source.start();
-				int read = 0;
-				byte[] audioData = new byte[16384];
-				
-				while(read > -1) {
-					read = audioInputStream.read(audioData, 0 , audioData.length);
-					if(read >= 0)
-						source.write(audioData, 0, read);
+				audioInputStream_ = AudioSystem.getAudioInputStream(new File(filename_));
+				audioFormat_ = audioInputStream_.getFormat();
+				info_ = new Info(SourceDataLine.class, audioFormat_);
+				source_ = (SourceDataLine) AudioSystem.getLine(info_);
+				source_.open(audioFormat_);
+				source_.start();
+
+				int bufferSize = (int) audioFormat_.getSampleRate()* audioFormat_.getFrameSize();
+				int bytesRead = 0;
+				byte[] audioData = new byte[bufferSize];
+
+				while (bytesRead > -1) {
+					bytesRead = audioInputStream_.read(audioData, 0, audioData.length);
+					if (bytesRead >= 0)
+						source_.write(audioData, 0, bytesRead);
 				}
-				
-				source.drain();
-				source.close();
-			}
-			catch(Exception e)
-			{
+
+				// Continues data line I/O until its buffer is drained.
+				source_.drain();
+
+				// Closes the data line, freeing any resources such as the audio device.
+				source_.close();
+			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}
@@ -54,7 +63,8 @@ public class EmetteurSonore implements IEmetteurSonore{
 
 	@Override
 	public void emettreClick() {
-		
+		AudioPlayer ap = new AudioPlayer();
+		ap.start();
 	}
 
 }
