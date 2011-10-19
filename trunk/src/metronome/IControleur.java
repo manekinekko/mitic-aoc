@@ -17,5 +17,6 @@ public interface IControleur{
 	
 	public IIHM getIHM();
 	public IMoteurMetronome getMoteur();
+	public void updateSlider();
 	
 }

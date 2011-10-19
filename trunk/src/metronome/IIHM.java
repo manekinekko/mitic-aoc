@@ -16,5 +16,6 @@ public interface IIHM {
 	public JButton getBoutonInc();
 	public JButton getBoutonDec();
 	public JSlider getSlider();
+	public int getValeurSlider();
 	
 }

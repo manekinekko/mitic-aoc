@@ -23,7 +23,7 @@ public class IHM extends JFrame implements IIHM {
 	private JTextField lcd_;
 	private LED led1_, led2_;
 	private JButton demarrer_, stop_, inc_, dec_;
-	private JSlider tempo_;
+	private JSlider slider_;
 	private IControleur controleur_;
 	private EmetteurSonore emetteur_;
 
@@ -41,9 +41,10 @@ public class IHM extends JFrame implements IIHM {
 		Box hBox1 = Box.createHorizontalBox();
 		Box hBox2 = Box.createHorizontalBox();
 
-		tempo_ = new JSlider(40, 210, 40);
+		slider_ = new JSlider(40, 210, 40);
+
 		//TODO faire un update de la valeur du JSlider sur le moteur
-		tempo_.addChangeListener(new CommandeChangeListener(
+		slider_.addChangeListener(new CommandeChangeListener(
 				MetronomeCommandeFactory.creerCommandeSlider(controleur_)));
 		//tempo_.setEnabled(false);
 
@@ -88,7 +89,7 @@ public class IHM extends JFrame implements IIHM {
 
 		hBox1.add(Box.createHorizontalGlue());
 		hBox1.add(Box.createHorizontalStrut(5));
-		hBox1.add(tempo_);
+		hBox1.add(slider_);
 		hBox1.add(lcd_);
 
 		JPanel ledPanel = new JPanel();
@@ -140,7 +141,7 @@ public class IHM extends JFrame implements IIHM {
 	}
 
 	public JSlider getSlider() {
-		return tempo_;
+		return slider_;
 	}
 
 	public void setEtatBouton(JButton bouton, boolean etat) {
@@ -151,6 +152,10 @@ public class IHM extends JFrame implements IIHM {
 		slider.setEnabled(etat);
 	}
 
+	public int getValeurSlider(){
+		return slider_.getValue();
+	}
+	
 	@Override
 	public void flasherLED() {
 		led1_.flasher();
@@ -160,5 +165,4 @@ public class IHM extends JFrame implements IIHM {
 	public void emettre() {
 		emetteur_.emettreClick();
 	}
-
 }

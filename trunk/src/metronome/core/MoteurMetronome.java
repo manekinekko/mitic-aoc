@@ -21,7 +21,7 @@ public class MoteurMetronome implements IMoteurMetronome {
 		
 		commandeMarqueurTemps_ = MetronomeCommandeFactory.creerCommandeMarqueurTemps(controleur_);
 		commandeTic_ = MetronomeCommandeFactory.creerCommandeTic(controleur_);
-		horloge_ = new Horloge();
+		horloge_ = new Horloge2();
 	}
 
 	@Override
@@ -46,7 +46,9 @@ public class MoteurMetronome implements IMoteurMetronome {
 		controleur_.updateEtatMoteur();
 		
 		if ( etatMarche_ ){
-			horloge_.activerPeriodiquement(commandeTic_, (float)(60.0/tempo_));
+			if ( tempo_ > 0 ){
+				horloge_.activerPeriodiquement(commandeTic_, (float)(60.0/tempo_));
+			}
 		}
 		else {
 			horloge_.desactiver(commandeTic_);
