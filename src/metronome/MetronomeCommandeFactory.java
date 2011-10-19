@@ -1,14 +1,6 @@
 package metronome;
 
-import metronome.command.CommandeDec;
-import metronome.command.CommandeDemarrer;
-import metronome.command.CommandeInc;
-import metronome.command.CommandeMarqueurTemps;
-import metronome.command.CommandeSlider;
-import metronome.command.CommandeStop;
-import metronome.command.CommandeTic;
-import metronome.command.ICommand;
-import metronome.command.ICommandSlider;
+import metronome.command.*;
 import metronome.core.EmetteurSonore;
 import metronome.core.IEmetteurSonore;
 
@@ -42,7 +34,7 @@ public class MetronomeCommandeFactory {
 		return new CommandeDec(controleur);
 	}
 	
-	public static ICommandSlider creerCommandeSlider(IControleur controleur) {
+	public static ICommand creerCommandeSlider(IControleur controleur) {
 		return new CommandeSlider(controleur);
 	}
 }

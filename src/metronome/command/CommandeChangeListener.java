@@ -6,9 +6,9 @@ import javax.swing.event.ChangeListener;
 
 public class CommandeChangeListener implements ChangeListener {
 
-	private ICommandSlider commande_;
+	private ICommand commande_;
 
-	public CommandeChangeListener(ICommandSlider commande){
+	public CommandeChangeListener(ICommand commande){
 		commande_ = commande;
 	}
 	
@@ -20,7 +20,6 @@ public class CommandeChangeListener implements ChangeListener {
             //int max = (int)source.getMaximum();
             //int min = (int)source.getMinimum();
             //commande_.setValeur(min+valeur*max-min);
-        	commande_.setValeur((int)source.getValue());
             commande_.execute();
         }
 	}

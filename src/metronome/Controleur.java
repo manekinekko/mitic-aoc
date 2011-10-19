@@ -57,6 +57,17 @@ public class Controleur implements IControleur{
 	public void updateCommandeDec() {
 		
 	}
+	
+	public void updateSlider(){
+		int valeur = ihm_.getValeurSlider();
+		moteur_.setTempo(valeur);
+	}
+	
+	@Override
+	public void updateCommandeSlider() {
+		int tempo = moteur_.getTempo();
+		ihm_.afficherTempo(tempo);
+	}
 
 	@Override
 	public void updateCommandeMarqueurTemps() {
@@ -69,12 +80,6 @@ public class Controleur implements IControleur{
 	}
 
 	@Override
-	public void updateCommandeSlider() {
-		int tempo = moteur_.getTempo();
-		ihm_.afficherTempo(tempo);
-	}
-
-	@Override
 	public IIHM getIHM() {
 		return ihm_;
 	}
@@ -83,6 +88,4 @@ public class Controleur implements IControleur{
 	public IMoteurMetronome getMoteur() {
 		return moteur_;
 	}
-
-
 }
