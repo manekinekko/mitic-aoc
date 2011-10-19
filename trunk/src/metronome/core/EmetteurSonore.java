@@ -1,46 +1,60 @@
 package metronome.core;
 
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioFormat;
+import javax.sound.sampled.DataLine.Info;
+import javax.sound.sampled.SourceDataLine;
+import javax.sound.sampled.AudioSystem;
+
 import java.io.File;
-import java.io.IOException;
 
-import javax.sound.midi.InvalidMidiDataException;
-import javax.sound.midi.MidiSystem;
-import javax.sound.midi.MidiUnavailableException;
-import javax.sound.midi.Sequence;
-import javax.sound.midi.Sequencer;
+public class EmetteurSonore implements IEmetteurSonore{
 
-public class EmetteurSonore implements IEmetteurSonore {
+	public void readWavFile(final String fileName) {
+		Runnable runnableSound = new RunnableSound(fileName);
+		Thread thread = new Thread(runnableSound);
+		thread.start();      
+	}
 
-	private Sequencer sequencer_;
+	class RunnableSound implements Runnable {
 
-	public EmetteurSonore() {
-
-		Sequence sequence;
-
-		try {
-			// From file
-			sequence = MidiSystem.getSequence(new File("src/metronome/assets/tac1.mid"));
-
-			// Create a sequencer for the sequence
-			sequencer_ = MidiSystem.getSequencer();
-			sequencer_.open();
-			sequencer_.setSequence(sequence);
-		} catch (IOException e) {
-		} catch (MidiUnavailableException e) {
-		} catch (InvalidMidiDataException e) {
+		private String fileName;
+		
+		public RunnableSound(String fileName) {
+			this.fileName = fileName;
 		}
-
+		
+		public void run() {
+			try {
+				AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(fileName));
+				AudioFormat format = audioInputStream.getFormat();
+				Info info = new Info(SourceDataLine.class, format);
+				SourceDataLine source = (SourceDataLine)AudioSystem.getLine(info);
+				source.open(format);
+				source.start();
+				int read = 0;
+				byte[] audioData = new byte[16384];
+				
+				while(read > -1) {
+					read = audioInputStream.read(audioData, 0 , audioData.length);
+					if(read >= 0)
+						source.write(audioData, 0, read);
+				}
+				
+				source.drain();
+				source.close();
+			}
+			catch(Exception e)
+			{
+				e.printStackTrace();
+			}
+		}
+		
 	}
 
 	@Override
 	public void emettreClick() {
-		sequencer_.start();
-		sequencer_.setMicrosecondPosition(0);
-	}
-
-	public static void main(String[] args) {
-		EmetteurSonore es = new EmetteurSonore();
-		es.emettreClick();
+		
 	}
 
 }
