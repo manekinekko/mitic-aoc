@@ -11,6 +11,7 @@ public class Controleur implements IControleur{
 	public Controleur(){
 		moteur_ = new MoteurMetronome(this);
 		ihm_ = new IHM(this);
+		MetronomeCommandeFactory.creerCommandeSlider(this).execute();
 	}
 	
 	public void demarrer() {
