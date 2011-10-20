@@ -10,18 +10,19 @@ public class MoteurMetronome implements IMoteurMetronome {
 	private IControleur controleur_;
 	private int tempo_;
 	private IHorloge horloge_;
-	
+
 	private ICommand commandeTic_;
 	private ICommand commandeMarqueurTemps_;
-	
+
 	public MoteurMetronome(IControleur controleur) {
 		controleur_ = controleur;
 		etatMarche_ = false;
 		tempo_ = 0;
-		
-		commandeMarqueurTemps_ = MetronomeCommandeFactory.creerCommandeMarqueurTemps(controleur_);
+
+		commandeMarqueurTemps_ = MetronomeCommandeFactory
+				.creerCommandeMarqueurTemps(controleur_);
 		commandeTic_ = MetronomeCommandeFactory.creerCommandeTic(controleur_);
-		horloge_ = new Horloge2();
+		horloge_ = new HorlogeWrapper();
 	}
 
 	@Override
@@ -31,8 +32,10 @@ public class MoteurMetronome implements IMoteurMetronome {
 
 	@Override
 	public void setTempo(int tempo) {
-		tempo_ = tempo;
+		tempo_ = (int) tempo;
 		controleur_.updateCommandeSlider();
+		desactiverLesCommandes_();
+		activerLesCommandes_();
 	}
 
 	@Override
@@ -44,16 +47,27 @@ public class MoteurMetronome implements IMoteurMetronome {
 	public void setEtatMarche(boolean etatMarche) {
 		etatMarche_ = etatMarche;
 		controleur_.updateEtatMoteur();
-		
-		if ( etatMarche_ ){
-			if ( tempo_ > 0 ){
-				horloge_.activerPeriodiquement(commandeTic_, (float)(60.0/tempo_));
-			}
-		}
-		else {
+
+		if (etatMarche_) {
+			desactiverLesCommandes_();
+			activerLesCommandes_();
+		} else {
 			horloge_.desactiver(commandeTic_);
 		}
-		
+
+	}
+
+	private void desactiverLesCommandes_() {
+		horloge_.desactiver(commandeTic_);
+	}
+
+	private void activerLesCommandes_() {
+
+		if (etatMarche_ && tempo_ > 0) {
+			horloge_.activerPeriodiquement(commandeTic_,
+					(float) (60.0 / tempo_));
+
+		}
 	}
 
 	@Override
@@ -63,7 +77,7 @@ public class MoteurMetronome implements IMoteurMetronome {
 
 	@Override
 	public void setTempsParMesure(int tempsParMesure) {
-		
+
 	}
 
 	@Override

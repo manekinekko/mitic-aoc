@@ -12,8 +12,7 @@ public class CommandeTic implements ICommand {
 	
 	@Override
 	public void execute() {
-		System.out.println("je suis une action Tic");
-//		controleur_.getMoteur().traiterCommandeTic();
+		controleur_.getMoteur().traiterCommandeTic();
 	}
 
 }
