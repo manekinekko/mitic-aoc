@@ -41,9 +41,8 @@ public class IHM extends JFrame implements IIHM {
 		Box hBox1 = Box.createHorizontalBox();
 		Box hBox2 = Box.createHorizontalBox();
 
-		slider_ = new JSlider(40, 210, 40);
+		slider_ = new JSlider(Constantes.SLIDER_MIN, Constantes.SLIDER_MAX, Constantes.SLIDER_DEFAULT);
 
-		//TODO faire un update de la valeur du JSlider sur le moteur
 		slider_.addChangeListener(new CommandeChangeListener(
 				MetronomeCommandeFactory.creerCommandeSlider(controleur_)));
 		//tempo_.setEnabled(false);

@@ -8,7 +8,7 @@ import javax.swing.Timer;
 
 import metronome.command.ICommand;
 
-public class Horloge2 implements IHorloge {
+public class TimerSwing implements IHorloge {
 	
 	private Timer timer_;
 	private ICommand cmd_;
@@ -16,7 +16,7 @@ public class Horloge2 implements IHorloge {
 	
 	private Hashtable<ICommand, Float> listCommandes_;
 	
-	public Horloge2(){
+	public TimerSwing(){
 		Timer.setLogTimers(true);
 		timer_ = new Timer(0, null);
 	}
@@ -27,10 +27,10 @@ public class Horloge2 implements IHorloge {
 		timer_.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				cmd.execute();
+				//cmd.execute();
+				System.out.println(periodeEnSeconde);
 			}
 		});
-		System.out.println(periodeEnSeconde);
 		timer_.setDelay((int)periodeEnSeconde);
 		timer_.setRepeats(true);
 		timer_.setActionCommand("dd");
