@@ -17,7 +17,7 @@ public class TimerSwing implements IHorloge {
 	private Hashtable<ICommand, Float> listCommandes_;
 	
 	public TimerSwing(){
-		Timer.setLogTimers(true);
+		//Timer.setLogTimers(true);
 		timer_ = new Timer(0, null);
 	}
 
