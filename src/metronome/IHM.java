@@ -2,9 +2,9 @@ package metronome;
 
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Font;
 import java.awt.GridLayout;
-
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.Box;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -12,7 +12,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSlider;
 import javax.swing.JTextField;
-
 import metronome.command.CommandeChangeListener;
 import metronome.command.CommandeMouseListener;
 import metronome.core.EmetteurSonore;
@@ -26,7 +25,8 @@ public class IHM extends JFrame implements IIHM {
 	private JSlider slider_;
 	private IControleur controleur_;
 	private EmetteurSonore emetteur_;
-
+	private int tempsParMesure_;
+	
 	public IHM(IControleur controleur) {
 		super("Metronome");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -46,18 +46,10 @@ public class IHM extends JFrame implements IIHM {
 		slider_.addChangeListener(new CommandeChangeListener(
 				MetronomeCommandeFactory.creerCommandeSlider(controleur_)));
 
-		//tempo_.setEnabled(false);
+		lcd_ = new LCD();
 
-		lcd_ = new JTextField("0");
-		lcd_.setPreferredSize(new Dimension(120, 50));
-		lcd_.setEditable(false);
-		lcd_.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 25));
-		lcd_.setHorizontalAlignment(JTextField.CENTER);
-		lcd_.setBackground(Color.black);
-		lcd_.setForeground(Color.white);
-
-		led1_ = new LED(Color.RED);
-		led2_ = new LED(Color.RED);
+		led1_ = new LED(Color.RED, Color.GRAY);
+		led2_ = new LED(Color.RED, Color.GRAY);
 
 		JLabel labelLed1 = new JLabel("Led 1");
 		labelLed1.setAlignmentX(CENTER_ALIGNMENT);
@@ -67,16 +59,32 @@ public class IHM extends JFrame implements IIHM {
 		demarrer_ = new JButton("START");
 		stop_ = new JButton("STOP");
 		inc_ = new JButton("INC");
+		inc_.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				tempsParMesure_++;
+				controleur_.updateCommandeInc();
+			}
+		});
 		dec_ = new JButton("DEC");
-
+		dec_.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				tempsParMesure_--;
+				controleur_.updateCommandeDec();
+			}
+		});
+		
 		demarrer_.addMouseListener(new CommandeMouseListener(
 				MetronomeCommandeFactory.creerCommandeDemarrer(controleur_)));
 		stop_.addMouseListener(new CommandeMouseListener(
 				MetronomeCommandeFactory.creerCommandeStop(controleur_)));
-		inc_.addMouseListener(new CommandeMouseListener(
-				MetronomeCommandeFactory.creerCommandeInc(controleur_)));
-		dec_.addMouseListener(new CommandeMouseListener(
-				MetronomeCommandeFactory.creerCommandeDec(controleur_)));
+//		inc_.addMouseListener(new CommandeMouseListener(
+//				MetronomeCommandeFactory.creerCommandeInc(controleur_)));
+//		dec_.addMouseListener(new CommandeMouseListener(
+//				MetronomeCommandeFactory.creerCommandeDec(controleur_)));
 
 		stop_.setEnabled(false);
 		inc_.setEnabled(false);
@@ -157,12 +165,33 @@ public class IHM extends JFrame implements IIHM {
 	}
 	
 	@Override
-	public void flasherLED() {
-		led1_.flasher();
+	public void allumerLED(int led) {
+		if(led == 1)
+			led1_.allumer();
+		else if(led == 2)
+			led2_.allumer();
 	}
 
 	@Override
+	public void eteindreLED(int led) {
+		if(led == 1)
+			led1_.eteindre();
+		else if(led == 2)
+			led2_.eteindre();
+	}
+	
+	@Override
 	public void emettreClick() {
 		emetteur_.emettreClick();
+	}
+
+	@Override
+	public int getTempsParMesure() {
+		return tempsParMesure_;
+	}
+
+	@Override
+	public void setTempsParMesure(int tempsParMesure) {
+		tempsParMesure_ = tempsParMesure;
 	}
 }

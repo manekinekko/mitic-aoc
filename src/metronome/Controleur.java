@@ -3,67 +3,77 @@ package metronome;
 import metronome.core.IMoteurMetronome;
 import metronome.core.MoteurMetronome;
 
-public class Controleur implements IControleur{
-	
+public class Controleur implements IControleur {
+
 	private IMoteurMetronome moteur_;
 	private IIHM ihm_;
-	
-	public Controleur(){
+
+	public Controleur() {
 		moteur_ = new MoteurMetronome(this);
 		ihm_ = new IHM(this);
 		MetronomeCommandeFactory.creerCommandeSlider(this).execute();
 	}
-	
+
 	public void demarrer() {
 		moteur_.setEtatMarche(true);
 	}
-	
+
 	public void stopper() {
 		moteur_.setEtatMarche(false);
 	}
 
 	@Override
 	public void marquerTemps() {
-		ihm_.flasherLED();
+		ihm_.allumerLED(1);
 		ihm_.emettreClick();
 	}
 
 	@Override
 	public void updateEtatMoteur() {
-		if ( moteur_.getEtatMarche() ){
-			System.out.println("Le moteur vient de notifier le controleur qu'il vient de démarrer!");
+		if (moteur_.getEtatMarche()) {
+			System.out
+					.println("Le moteur vient de notifier le controleur qu'il vient de démarrer!");
 			ihm_.setEtatBouton(ihm_.getBoutonStop(), true);
 			ihm_.setEtatBouton(ihm_.getBoutonDec(), true);
 			ihm_.setEtatBouton(ihm_.getBoutonInc(), true);
 			ihm_.setEtatBouton(ihm_.getBoutonDemarrer(), false);
 			ihm_.setEtatSlider(ihm_.getSlider(), true);
-		}
-		else {
-			System.out.println("Le moteur vient de notifier le controleur qu'il vient de stopper!");
+		} else {
+			System.out
+					.println("Le moteur vient de notifier le controleur qu'il vient de stopper!");
 			ihm_.setEtatBouton(ihm_.getBoutonStop(), false);
 			ihm_.setEtatBouton(ihm_.getBoutonDec(), false);
 			ihm_.setEtatBouton(ihm_.getBoutonInc(), false);
 			ihm_.setEtatBouton(ihm_.getBoutonDemarrer(), true);
 			ihm_.setEtatSlider(ihm_.getSlider(), true);
-
 		}
 	}
 
 	@Override
+	public void incrementer() {
+		moteur_.setTempsParMesure(ihm_.getTempsParMesure());
+	}
+
+	@Override
+	public void decrementer() {
+		moteur_.setTempsParMesure(ihm_.getTempsParMesure());
+	}
+
+	@Override
 	public void updateCommandeInc() {
-		
+		ihm_.setTempsParMesure(moteur_.getTempsParMesure());
 	}
 
 	@Override
 	public void updateCommandeDec() {
-		
+		ihm_.setTempsParMesure(moteur_.getTempsParMesure());
 	}
-	
-	public void updateSlider(){
+
+	public void updateSlider() {
 		int valeur = ihm_.getValeurSlider();
 		moteur_.setTempo(valeur);
 	}
-	
+
 	@Override
 	public void updateCommandeSlider() {
 		int tempo = moteur_.getTempo();
@@ -72,7 +82,7 @@ public class Controleur implements IControleur{
 
 	@Override
 	public void updateCommandeMarqueurTemps() {
-		
+
 	}
 
 	@Override
@@ -89,4 +99,5 @@ public class Controleur implements IControleur{
 	public IMoteurMetronome getMoteur() {
 		return moteur_;
 	}
+
 }
