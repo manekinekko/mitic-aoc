@@ -45,6 +45,7 @@ public class IHM extends JFrame implements IIHM {
 
 		slider_.addChangeListener(new CommandeChangeListener(
 				MetronomeCommandeFactory.creerCommandeSlider(controleur_)));
+
 		//tempo_.setEnabled(false);
 
 		lcd_ = new JTextField("0");
@@ -161,7 +162,7 @@ public class IHM extends JFrame implements IIHM {
 	}
 
 	@Override
-	public void emettre() {
+	public void emettreClick() {
 		emetteur_.emettreClick();
 	}
 }
