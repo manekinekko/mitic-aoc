@@ -9,7 +9,7 @@ public interface IIHM {
 	public void setEtatBouton(JButton bouton, boolean etat);
 	public void setEtatSlider(JSlider slider, boolean etat);
 	public void flasherLED();
-	public void emettre();
+	public void emettreClick();
 	
 	public JButton getBoutonDemarrer();
 	public JButton getBoutonStop();

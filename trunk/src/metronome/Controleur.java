@@ -25,7 +25,7 @@ public class Controleur implements IControleur{
 	@Override
 	public void marquerTemps() {
 		ihm_.flasherLED();
-		ihm_.emettre();
+		ihm_.emettreClick();
 	}
 
 	@Override
@@ -44,7 +44,7 @@ public class Controleur implements IControleur{
 			ihm_.setEtatBouton(ihm_.getBoutonDec(), false);
 			ihm_.setEtatBouton(ihm_.getBoutonInc(), false);
 			ihm_.setEtatBouton(ihm_.getBoutonDemarrer(), true);
-			ihm_.setEtatSlider(ihm_.getSlider(), false);
+			ihm_.setEtatSlider(ihm_.getSlider(), true);
 
 		}
 	}

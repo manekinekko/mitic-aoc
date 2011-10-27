@@ -13,6 +13,8 @@ public class MoteurMetronome implements IMoteurMetronome {
 
 	private ICommand commandeTic_;
 	private ICommand commandeMarqueurTemps_;
+	private final int minTempo = 40;
+	private final int maxTempo = 240;
 
 	public MoteurMetronome(IControleur controleur) {
 		controleur_ = controleur;
@@ -23,6 +25,7 @@ public class MoteurMetronome implements IMoteurMetronome {
 				.creerCommandeMarqueurTemps(controleur_);
 		commandeTic_ = MetronomeCommandeFactory.creerCommandeTic(controleur_);
 		horloge_ = new HorlogeWrapper();
+
 	}
 
 	@Override
@@ -32,7 +35,7 @@ public class MoteurMetronome implements IMoteurMetronome {
 
 	@Override
 	public void setTempo(int tempo) {
-		tempo_ = (int) tempo;
+		tempo_ = (int) minTempo + tempo*(maxTempo-minTempo)/1000;
 		controleur_.updateCommandeSlider();
 		desactiverLesCommandes_();
 		activerLesCommandes_();
