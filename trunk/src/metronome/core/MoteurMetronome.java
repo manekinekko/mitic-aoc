@@ -15,6 +15,7 @@ public class MoteurMetronome implements IMoteurMetronome {
 	private ICommand commandeMarqueurTemps_;
 	private final int minTempo = 40;
 	private final int maxTempo = 240;
+	private int tempsParMesure_;
 
 	public MoteurMetronome(IControleur controleur) {
 		controleur_ = controleur;
@@ -75,12 +76,18 @@ public class MoteurMetronome implements IMoteurMetronome {
 
 	@Override
 	public int getTempsParMesure() {
-		return 0;
+		return tempsParMesure_;
 	}
 
 	@Override
 	public void setTempsParMesure(int tempsParMesure) {
-
+		if(tempsParMesure >= 7){
+			tempsParMesure_ = 7;
+		} else if(tempsParMesure <= 0){
+			tempsParMesure_ = 0;
+		} else {
+			tempsParMesure_ = tempsParMesure;
+		}
 	}
 
 	@Override
@@ -90,10 +97,12 @@ public class MoteurMetronome implements IMoteurMetronome {
 
 	@Override
 	public void attach(IControleur o) {
+		//TODO virer cette methode?
 	}
 
 	@Override
 	public void detach(IControleur o) {
+		//TODO virer cette methode?
 	}
 
 }

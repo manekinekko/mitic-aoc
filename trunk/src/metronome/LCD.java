@@ -1,31 +1,21 @@
 package metronome;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Graphics;
+import java.awt.Font;
+import javax.swing.JTextField;
 
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-
-public class LCD extends JPanel {
+public class LCD extends JTextField {
 
 	private static final long serialVersionUID = 1L;
-	private String message_;
 	
-	public LCD(String message){
-		
+	public LCD(){
 		super();
-		message_ = message;
-		setPreferredSize(new Dimension(200, 100));
-		JLabel label = new JLabel(message);
-		add(label);
-		
+		setPreferredSize(new Dimension(120, 50));
+		setEditable(false);
+		setFont(new Font(Font.SANS_SERIF, Font.BOLD, 25));
+		setHorizontalAlignment(JTextField.CENTER);
+		setBackground(Color.black);
+		setForeground(Color.white);
 	}
 	
-	public void paint(Graphics g){
-		super.paint(g);
-		g.setColor(Color.gray);
-		g.fillRect(0, 0, getWidth(), getHeight());
-		
-	}
-
 }

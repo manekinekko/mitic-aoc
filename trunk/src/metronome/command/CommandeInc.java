@@ -13,7 +13,7 @@ public class CommandeInc implements ICommand {
 
 	@Override
 	public void execute() {
-
+		controleur_.updateCommandeInc();
 	}
 
 }

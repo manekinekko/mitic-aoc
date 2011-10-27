@@ -13,7 +13,7 @@ public class CommandeDec implements ICommand {
 
 	@Override
 	public void execute() {
-		controleur_.updateSlider();
+		controleur_.updateCommandeDec();
 	}
 
 }

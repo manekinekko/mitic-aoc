@@ -1,14 +1,8 @@
 package metronome;
 
 import metronome.command.*;
-import metronome.core.EmetteurSonore;
-import metronome.core.IEmetteurSonore;
 
 public class MetronomeCommandeFactory {
-
-//	public static IEmetteurSonore creerEmetteurSonore() {
-//		return new EmetteurSonore();
-//	}
 
 	public static ICommand creerCommandeTic(IControleur controleur) {
 		return new CommandeTic(controleur);
