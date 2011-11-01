@@ -43,11 +43,17 @@ public class MoteurMetronome implements IMoteurMetronome {
 
 	@Override
 	public void setTempo(int tempo) {
-		tempo_ = (int) MIN_TEMPO + tempo*(MAX_TEMPO-MIN_TEMPO)/1000;
+		if(tempo < 0){
+			tempo_ = MIN_TEMPO;
+		} else if(tempo > 1000){
+			tempo_ = MAX_TEMPO;
+		} else {
+			tempo_ = (int) MIN_TEMPO + tempo*(MAX_TEMPO-MIN_TEMPO)/1000;
+		}
+		
 		controleur_.updateCommandeSlider();
 		desactiverLesCommandes_();
 		activerLesCommandes_();
-		System.out.println(tempo);
 	}
 
 	@Override
@@ -111,10 +117,6 @@ public class MoteurMetronome implements IMoteurMetronome {
 		
 		mesureActuelle_++;
 		
-	}
-	
-	public int getTempsParMesure_() {
-		return tempsParMesure_;
 	}
 
 }
