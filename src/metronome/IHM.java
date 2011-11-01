@@ -14,8 +14,19 @@ import javax.swing.JSlider;
 import javax.swing.JTextField;
 import metronome.command.CommandeChangeListener;
 import metronome.command.CommandeMouseListener;
+import metronome.command.MetronomeCommandeFactory;
 import metronome.core.EmetteurSonore;
 
+/**
+ * Cette classe définit la représentation graphique du programme.
+ * Elle permet d'accueillir tout les autres composants graphiques tels
+ * les boutons, slider et LED.<br/> 
+ * <b>En d'autres termes cette classe représente la Vue du pattern MVC.</b> 
+ * 
+ * @author Wassim Chegham <contact@cheghamwassim.com>
+ * @version 1.0
+ * @see IIHM
+ */
 public class IHM extends JFrame implements IIHM {
 
 	private static final long serialVersionUID = 1L;
@@ -25,22 +36,31 @@ public class IHM extends JFrame implements IIHM {
 	private JSlider slider_;
 	private IControleur controleur_;
 	private EmetteurSonore emetteur_;
-	
+
+	/**
+	 * Le constructeur de la classe IHM peremet d'initialiser la construction
+	 * de l'IHM.
+	 * @param controleur Le controleur associé à cette vue.
+	 */
 	public IHM(IControleur controleur) {
 		super("Metronome");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		controleur_ = controleur;
-		construireIHM_();
 		emetteur_ = new EmetteurSonore();
+		construireIHM_();
 	}
 
+	/**
+	 * Cette méthode contruit l'IHM.
+	 */
 	private void construireIHM_() {
 
 		Box vBox = Box.createVerticalBox();
 		Box hBox1 = Box.createHorizontalBox();
 		Box hBox2 = Box.createHorizontalBox();
 
-		slider_ = new JSlider(Constantes.SLIDER_MIN, Constantes.SLIDER_MAX, Constantes.SLIDER_DEFAULT);
+		slider_ = new JSlider(Constantes.SLIDER_MIN, Constantes.SLIDER_MAX,
+				Constantes.SLIDER_DEFAULT);
 
 		slider_.addChangeListener(new CommandeChangeListener(
 				MetronomeCommandeFactory.creerCommandeSlider(controleur_)));
@@ -59,29 +79,27 @@ public class IHM extends JFrame implements IIHM {
 		stop_ = new JButton("STOP");
 		inc_ = new JButton("INC");
 		inc_.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				controleur_.incrementer();
 			}
+
 		});
 		dec_ = new JButton("DEC");
 		dec_.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				controleur_.decrementer();
 			}
+
 		});
-		
+
 		demarrer_.addMouseListener(new CommandeMouseListener(
 				MetronomeCommandeFactory.creerCommandeDemarrer(controleur_)));
 		stop_.addMouseListener(new CommandeMouseListener(
 				MetronomeCommandeFactory.creerCommandeStop(controleur_)));
-//		inc_.addMouseListener(new CommandeMouseListener(
-//				MetronomeCommandeFactory.creerCommandeInc(controleur_)));
-//		dec_.addMouseListener(new CommandeMouseListener(
-//				MetronomeCommandeFactory.creerCommandeDec(controleur_)));
 
 		stop_.setEnabled(false);
 		inc_.setEnabled(false);
@@ -125,58 +143,67 @@ public class IHM extends JFrame implements IIHM {
 						+ hBox2.getPreferredSize().height + 10));
 	}
 
+	@Override
 	public void afficherTempo(int valeur) {
 		lcd_.setText("" + valeur);
 	}
 
+	@Override
 	public JButton getBoutonDemarrer() {
 		return demarrer_;
 	}
 
+	@Override
 	public JButton getBoutonStop() {
 		return stop_;
 	}
 
+	@Override
 	public JButton getBoutonInc() {
 		return inc_;
 	}
 
+	@Override
 	public JButton getBoutonDec() {
 		return dec_;
 	}
 
+	@Override
 	public JSlider getSlider() {
 		return slider_;
 	}
 
+	@Override
 	public void setEtatBouton(JButton bouton, boolean etat) {
 		bouton.setEnabled(etat);
 	}
-
+	
+	@Override
 	public void setEtatSlider(JSlider slider, boolean etat) {
 		slider.setEnabled(etat);
 	}
 
-	public int getValeurSlider(){
+	@Override
+	public int getValeurSlider() {
 		return slider_.getValue();
 	}
-	
+
 	@Override
 	public void allumerLED(int led) {
-		if(led == 1)
+		if (led == 1)
 			led1_.allumer();
-		else if(led == 2)
+		else if (led == 2)
 			led2_.allumer();
 	}
 
 	@Override
 	public void eteindreLED(int led) {
-		if(led == 1)
+		if (led == 1)
 			led1_.eteindre();
-		else if(led == 2)
+		else if (led == 2)
 			led2_.eteindre();
 	}
-	
+
 	@Override
 	public void emettreClick() {
 		emetteur_.emettreClick();

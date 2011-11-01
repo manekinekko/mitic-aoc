@@ -2,7 +2,7 @@ package metronome;
 
 import java.util.Date;
 
-import metronome.command.CommandeEteindreLed;
+import metronome.command.MetronomeCommandeFactory;
 import metronome.core.HorlogeWrapper;
 import metronome.core.IHorloge;
 import metronome.core.IMoteurMetronome;
@@ -13,7 +13,7 @@ public class Controleur implements IControleur {
 	private IMoteurMetronome moteur_;
 	private IIHM ihm_;
 	private IHorloge horloge_;
-	private long time = 0;
+	private long time_ = 0;
 
 	public Controleur() {
 		horloge_ = new HorlogeWrapper();
@@ -119,12 +119,13 @@ public class Controleur implements IControleur {
 
 		long newTime = new Date().getTime();
 		System.out.println("ecart avec le dernier marquerTemps:"
-				+ (newTime - time));
-		time = newTime;
+				+ (newTime - time_));
+		time_ = newTime;
 
 		ihm_.allumerLED(1);
-		horloge_.activerApresDelai(new CommandeEteindreLed(this, 1),
-				(float) 0.15);
+		horloge_.activerApresDelai(
+				MetronomeCommandeFactory.creerCommandeEteindreLed(this, 1),
+				0.15F);
 
 		ihm_.emettreClick();
 	}
@@ -137,8 +138,9 @@ public class Controleur implements IControleur {
 	@Override
 	public void marquerMesure() {
 		ihm_.allumerLED(2);
-		horloge_.activerApresDelai(new CommandeEteindreLed(this, 2),
-				(float) 0.15);
+		horloge_.activerApresDelai(
+				MetronomeCommandeFactory.creerCommandeEteindreLed(this, 2),
+				0.15F);
 	}
 
 }

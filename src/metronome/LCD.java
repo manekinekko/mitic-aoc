@@ -4,6 +4,12 @@ import java.awt.Dimension;
 import java.awt.Font;
 import javax.swing.JTextField;
 
+/**
+ * Cette classe Définit le composant peremttant d'afficher les valeur du tempo.
+ * 
+ * @author Wassim Chegham <contact@cheghamwassim.com>
+ * @version 1.0
+ */
 public class LCD extends JTextField {
 
 	private static final long serialVersionUID = 1L;
