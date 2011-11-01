@@ -16,6 +16,9 @@ public class HorlogeWrapper implements IHorloge {
 
 	private IHorloge horloge_;
 
+	/**
+	 * Constructeur de HorlogeWrapper. Initialise le TimerSwing.
+	 */
 	public HorlogeWrapper() {
 		horloge_ = new TimerSwing();
 	}
