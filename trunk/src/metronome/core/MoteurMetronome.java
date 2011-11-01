@@ -1,8 +1,8 @@
 package metronome.core;
 
 import metronome.IControleur;
-import metronome.MetronomeCommandeFactory;
 import metronome.command.ICommand;
+import metronome.command.MetronomeCommandeFactory;
 
 public class MoteurMetronome implements IMoteurMetronome {
 
@@ -115,16 +115,6 @@ public class MoteurMetronome implements IMoteurMetronome {
 	
 	public int getTempsParMesure_() {
 		return tempsParMesure_;
-	}
-
-	@Override
-	public void attach(IControleur o) {
-		//TODO virer cette methode?
-	}
-
-	@Override
-	public void detach(IControleur o) {
-		//TODO virer cette methode?
 	}
 
 }

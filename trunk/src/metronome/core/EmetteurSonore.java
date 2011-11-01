@@ -9,11 +9,11 @@ import javax.sound.sampled.DataLine.Info;
 
 public class EmetteurSonore implements IEmetteurSonore {
 
-	String filename_;
-	AudioInputStream audioInputStream_;
-	AudioFormat audioFormat_;
-	Info info_;
-	SourceDataLine source_;
+	private String filename_;
+	private AudioInputStream audioInputStream_;
+	private AudioFormat audioFormat_;
+	private Info info_;
+	private SourceDataLine source_;
 
 	public EmetteurSonore() {
 		filename_ = "src/metronome/assets/tac.wav";
@@ -25,7 +25,6 @@ public class EmetteurSonore implements IEmetteurSonore {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} 
-
 	}
 	
 	private class AudioPlayer extends Thread{

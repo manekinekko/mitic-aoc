@@ -1,7 +1,5 @@
 package metronome.core;
 
-import metronome.IControleur;
-
 public interface IMoteurMetronome {
 
 	public int getTempo();
@@ -11,6 +9,4 @@ public interface IMoteurMetronome {
 	public int getTempsParMesure();
 	public void setTempsParMesure(int tempsParMesure);
 	public void traiterCommandeTic();
-	public void attach(IControleur o);
-	public void detach(IControleur o);
 }
