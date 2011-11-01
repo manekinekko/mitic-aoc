@@ -2,10 +2,7 @@ package metronome.core;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Hashtable;
-
 import javax.swing.Timer;
-
 import metronome.command.ICommand;
 
 public class TimerSwing implements IHorloge {
@@ -34,16 +31,16 @@ public class TimerSwing implements IHorloge {
 	}
 
 	public void activerApresDelai(final ICommand cmd, final float delaiEnSecondes) {
-		timerDelai_.addActionListener(new ActionListener() {
+		timerDelai_ = new Timer(0, new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				cmd.execute();
 			}
 		});
-		timerDelai_.setDelay((int)delaiEnSecondes);
-		timerDelai_.setRepeats(true);
-		timerDelai_.setActionCommand("dd");
-		timerDelai_.restart();
+
+		timerDelai_.setInitialDelay((int)delaiEnSecondes);
+		timerDelai_.setRepeats(false);
+		timerDelai_.start();
 	}
 
 	public void desactiver(ICommand cmd) {

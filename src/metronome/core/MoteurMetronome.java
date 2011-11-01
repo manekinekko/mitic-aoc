@@ -17,7 +17,8 @@ public class MoteurMetronome implements IMoteurMetronome {
 	private final int maxTempo = 240;
 	private int tempsParMesure_;
 
-	public MoteurMetronome(IControleur controleur) {
+	public MoteurMetronome(IControleur controleur, IHorloge horloge) {
+		horloge_ = horloge;
 		controleur_ = controleur;
 		etatMarche_ = false;
 		tempo_ = 0;
@@ -25,8 +26,6 @@ public class MoteurMetronome implements IMoteurMetronome {
 		commandeMarqueurTemps_ = MetronomeCommandeFactory
 				.creerCommandeMarqueurTemps(controleur_);
 		commandeTic_ = MetronomeCommandeFactory.creerCommandeTic(controleur_);
-		horloge_ = new HorlogeWrapper();
-
 	}
 
 	@Override
@@ -70,7 +69,6 @@ public class MoteurMetronome implements IMoteurMetronome {
 		if (etatMarche_ && tempo_ > 0) {
 			horloge_.activerPeriodiquement(commandeTic_,
 					(float) (60.0 / tempo_));
-
 		}
 	}
 
@@ -93,6 +91,7 @@ public class MoteurMetronome implements IMoteurMetronome {
 	@Override
 	public void traiterCommandeTic() {
 		commandeMarqueurTemps_.execute();
+		
 	}
 
 	@Override

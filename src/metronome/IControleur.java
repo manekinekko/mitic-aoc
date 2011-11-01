@@ -20,5 +20,6 @@ public interface IControleur{
 	public void updateSlider();
 	void incrementer();
 	void decrementer();
+	public void eteindreLed(int led_);
 	
 }
