@@ -1,6 +1,7 @@
 package metronome.test;
 
 import static org.junit.Assert.*;
+import metronome.Controleur;
 import metronome.core.HorlogeWrapper;
 import metronome.core.MoteurMetronome;
 import org.junit.Before;
@@ -12,7 +13,7 @@ public class MoteurMetronomeTest {
 	
     @Before
     public void setUp() throws Exception {
-    	metronome = new MoteurMetronome(new ControleurBidon(), new HorlogeWrapper());
+    	metronome = new MoteurMetronome(new Controleur(), new HorlogeWrapper());
     }
 	
 	@Test
