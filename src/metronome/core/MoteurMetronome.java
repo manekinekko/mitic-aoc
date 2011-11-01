@@ -13,18 +13,24 @@ public class MoteurMetronome implements IMoteurMetronome {
 
 	private ICommand commandeTic_;
 	private ICommand commandeMarqueurTemps_;
+	private ICommand commandeMarqueurMesure_;
 	private final int minTempo = 40;
 	private final int maxTempo = 240;
 	private int tempsParMesure_;
+	private int mesureActuelle_;
 
 	public MoteurMetronome(IControleur controleur, IHorloge horloge) {
 		horloge_ = horloge;
 		controleur_ = controleur;
 		etatMarche_ = false;
+		tempsParMesure_ = 2;
 		tempo_ = 0;
+		mesureActuelle_ = 0;
 
 		commandeMarqueurTemps_ = MetronomeCommandeFactory
 				.creerCommandeMarqueurTemps(controleur_);
+		commandeMarqueurMesure_ = MetronomeCommandeFactory
+				.creerCommandeMarqueurMesure(controleur_);
 		commandeTic_ = MetronomeCommandeFactory.creerCommandeTic(controleur_);
 	}
 
@@ -81,8 +87,8 @@ public class MoteurMetronome implements IMoteurMetronome {
 	public void setTempsParMesure(int tempsParMesure) {
 		if(tempsParMesure >= 7){
 			tempsParMesure_ = 7;
-		} else if(tempsParMesure <= 0){
-			tempsParMesure_ = 0;
+		} else if(tempsParMesure <= 2){
+			tempsParMesure_ = 2;
 		} else {
 			tempsParMesure_ = tempsParMesure;
 		}
@@ -91,6 +97,16 @@ public class MoteurMetronome implements IMoteurMetronome {
 	@Override
 	public void traiterCommandeTic() {
 		commandeMarqueurTemps_.execute();
+		
+		if(mesureActuelle_ == tempsParMesure_){
+			mesureActuelle_ = 0;
+		}
+		
+		if(mesureActuelle_ == 0){
+			commandeMarqueurMesure_.execute();
+		}
+		
+		mesureActuelle_++;
 		
 	}
 

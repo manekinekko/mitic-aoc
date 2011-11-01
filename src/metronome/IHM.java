@@ -25,7 +25,6 @@ public class IHM extends JFrame implements IIHM {
 	private JSlider slider_;
 	private IControleur controleur_;
 	private EmetteurSonore emetteur_;
-	private int tempsParMesure_;
 	
 	public IHM(IControleur controleur) {
 		super("Metronome");
@@ -63,8 +62,7 @@ public class IHM extends JFrame implements IIHM {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				tempsParMesure_++;
-				controleur_.updateCommandeInc();
+				controleur_.incrementer();
 			}
 		});
 		dec_ = new JButton("DEC");
@@ -72,8 +70,7 @@ public class IHM extends JFrame implements IIHM {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				tempsParMesure_--;
-				controleur_.updateCommandeDec();
+				controleur_.decrementer();
 			}
 		});
 		
@@ -185,13 +182,4 @@ public class IHM extends JFrame implements IIHM {
 		emetteur_.emettreClick();
 	}
 
-	@Override
-	public int getTempsParMesure() {
-		return tempsParMesure_;
-	}
-
-	@Override
-	public void setTempsParMesure(int tempsParMesure) {
-		tempsParMesure_ = tempsParMesure;
-	}
 }

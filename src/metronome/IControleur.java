@@ -18,8 +18,9 @@ public interface IControleur{
 	public IIHM getIHM();
 	public IMoteurMetronome getMoteur();
 	public void updateSlider();
-	void incrementer();
+	void incrementer(); 
 	void decrementer();
 	public void eteindreLed(int led_);
+	public void marquerMesure();
 	
 }
