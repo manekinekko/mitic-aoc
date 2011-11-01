@@ -45,6 +45,7 @@ public class MoteurMetronome implements IMoteurMetronome {
 		controleur_.updateCommandeSlider();
 		desactiverLesCommandes_();
 		activerLesCommandes_();
+		System.out.println(tempo);
 	}
 
 	@Override
