@@ -20,6 +20,7 @@ public class Controleur implements IControleur {
 		moteur_ = new MoteurMetronome(this, horloge_);
 		ihm_ = new IHM(this);
 		changeEtatBouttonsIncDec();
+		//mise a jour de la valeur du tempo de l'IHM
 		MetronomeCommandeFactory.creerCommandeSlider(this).execute();
 	}
 
