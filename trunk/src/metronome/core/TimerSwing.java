@@ -21,6 +21,9 @@ public class TimerSwing implements IHorloge {
 	private Timer timerPeriodique_;
 	private Timer timerDelai_;
 
+	/**
+	 * Constructeur de TimerSwing. Initialise les timers.
+	 */
 	public TimerSwing() {
 		// Timer.setLogTimers(true);
 		timerPeriodique_ = new Timer(0, null);
