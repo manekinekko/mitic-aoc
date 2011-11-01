@@ -53,22 +53,22 @@ public class Controleur implements IControleur {
 
 	@Override
 	public void incrementer() {
-		moteur_.setTempsParMesure(ihm_.getTempsParMesure());
+		moteur_.setTempsParMesure(moteur_.getTempsParMesure()+1);
 	}
 
 	@Override
 	public void decrementer() {
-		moteur_.setTempsParMesure(ihm_.getTempsParMesure());
+		moteur_.setTempsParMesure(moteur_.getTempsParMesure()-1);
 	}
 
 	@Override
 	public void updateCommandeInc() {
-		ihm_.setTempsParMesure(moteur_.getTempsParMesure());
+		
 	}
 
 	@Override
 	public void updateCommandeDec() {
-		ihm_.setTempsParMesure(moteur_.getTempsParMesure());
+		
 	}
 
 	public void updateSlider() {
@@ -111,7 +111,7 @@ public class Controleur implements IControleur {
 		
 		ihm_.allumerLED(1);
 		horloge_.activerApresDelai(new CommandeEteindreLed(this, 1),
-				(float) 0.1);
+				(float) 0.15);
 
 		ihm_.emettreClick();
 	}
@@ -119,6 +119,13 @@ public class Controleur implements IControleur {
 	@Override
 	public void eteindreLed(int led) {
 		ihm_.eteindreLED(led);
+	}
+
+	@Override
+	public void marquerMesure() {
+		ihm_.allumerLED(2);
+		horloge_.activerApresDelai(new CommandeEteindreLed(this, 2),
+				(float) 0.15);
 	}
 
 }

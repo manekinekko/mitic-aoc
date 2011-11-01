@@ -12,6 +12,10 @@ public class MetronomeCommandeFactory {
 		return new CommandeMarqueurTemps(controleur);
 	}
 
+	public static ICommand creerCommandeMarqueurMesure(IControleur controleur) {
+		return new CommandeMarqueurMesure(controleur);
+	}
+	
 	public static ICommand creerCommandeDemarrer(IControleur controleur) {
 		return new CommandeDemarrer(controleur);
 	}

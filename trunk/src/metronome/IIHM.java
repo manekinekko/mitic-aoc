@@ -18,7 +18,5 @@ public interface IIHM {
 	public JButton getBoutonDec();
 	public JSlider getSlider();
 	public int getValeurSlider();
-	public int getTempsParMesure();
-	public void setTempsParMesure(int tempsParMesure);
 	
 }
