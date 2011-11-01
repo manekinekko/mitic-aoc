@@ -19,6 +19,7 @@ public class Controleur implements IControleur {
 		horloge_ = new HorlogeWrapper();
 		moteur_ = new MoteurMetronome(this, horloge_);
 		ihm_ = new IHM(this);
+		changeEtatBouttonsIncDec();
 		MetronomeCommandeFactory.creerCommandeSlider(this).execute();
 	}
 
@@ -36,39 +37,50 @@ public class Controleur implements IControleur {
 			System.out
 					.println("Le moteur vient de notifier le controleur qu'il vient de démarrer!");
 			ihm_.setEtatBouton(ihm_.getBoutonStop(), true);
-			ihm_.setEtatBouton(ihm_.getBoutonDec(), true);
-			ihm_.setEtatBouton(ihm_.getBoutonInc(), true);
 			ihm_.setEtatBouton(ihm_.getBoutonDemarrer(), false);
-			ihm_.setEtatSlider(ihm_.getSlider(), true);
+			changeEtatBouttonsIncDec();
 		} else {
 			System.out
 					.println("Le moteur vient de notifier le controleur qu'il vient de stopper!");
 			ihm_.setEtatBouton(ihm_.getBoutonStop(), false);
-			ihm_.setEtatBouton(ihm_.getBoutonDec(), false);
-			ihm_.setEtatBouton(ihm_.getBoutonInc(), false);
 			ihm_.setEtatBouton(ihm_.getBoutonDemarrer(), true);
-			ihm_.setEtatSlider(ihm_.getSlider(), true);
+			changeEtatBouttonsIncDec();
 		}
 	}
 
 	@Override
 	public void incrementer() {
-		moteur_.setTempsParMesure(moteur_.getTempsParMesure()+1);
+		moteur_.setTempsParMesure(moteur_.getTempsParMesure() + 1);
+		changeEtatBouttonsIncDec();
 	}
 
 	@Override
 	public void decrementer() {
-		moteur_.setTempsParMesure(moteur_.getTempsParMesure()-1);
+		moteur_.setTempsParMesure(moteur_.getTempsParMesure() - 1);
+		changeEtatBouttonsIncDec();
+	}
+
+	private void changeEtatBouttonsIncDec() {
+		if (moteur_.getTempsParMesure() > MoteurMetronome.MIN_TEMPS_PAR_MESURE) {
+			ihm_.setEtatBouton(ihm_.getBoutonDec(), true);
+		} else {
+			ihm_.setEtatBouton(ihm_.getBoutonDec(), false);
+		}
+		if (moteur_.getTempsParMesure() < MoteurMetronome.MAX_TEMPS_PAR_MESURE) {
+			ihm_.setEtatBouton(ihm_.getBoutonInc(), true);
+		} else {
+			ihm_.setEtatBouton(ihm_.getBoutonInc(), false);
+		}
 	}
 
 	@Override
 	public void updateCommandeInc() {
-		
+
 	}
 
 	@Override
 	public void updateCommandeDec() {
-		
+
 	}
 
 	public void updateSlider() {
@@ -104,11 +116,12 @@ public class Controleur implements IControleur {
 
 	@Override
 	public void marquerTemps() {
-		
+
 		long newTime = new Date().getTime();
-		System.out.println("ecart avec le dernier marquerTemps:"+(newTime - time));
+		System.out.println("ecart avec le dernier marquerTemps:"
+				+ (newTime - time));
 		time = newTime;
-		
+
 		ihm_.allumerLED(1);
 		horloge_.activerApresDelai(new CommandeEteindreLed(this, 1),
 				(float) 0.15);

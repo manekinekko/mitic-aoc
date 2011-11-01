@@ -14,8 +14,10 @@ public class MoteurMetronome implements IMoteurMetronome {
 	private ICommand commandeTic_;
 	private ICommand commandeMarqueurTemps_;
 	private ICommand commandeMarqueurMesure_;
-	private final int minTempo = 40;
-	private final int maxTempo = 240;
+	public static final int MIN_TEMPO = 40;
+	public static final int MAX_TEMPO = 240;
+	public static final int MIN_TEMPS_PAR_MESURE = 2;
+	public static final int MAX_TEMPS_PAR_MESURE = 7;
 	private int tempsParMesure_;
 	private int mesureActuelle_;
 
@@ -23,7 +25,7 @@ public class MoteurMetronome implements IMoteurMetronome {
 		horloge_ = horloge;
 		controleur_ = controleur;
 		etatMarche_ = false;
-		tempsParMesure_ = 2;
+		setTempsParMesure(4);
 		tempo_ = 0;
 		mesureActuelle_ = 0;
 
@@ -41,7 +43,7 @@ public class MoteurMetronome implements IMoteurMetronome {
 
 	@Override
 	public void setTempo(int tempo) {
-		tempo_ = (int) minTempo + tempo*(maxTempo-minTempo)/1000;
+		tempo_ = (int) MIN_TEMPO + tempo*(MAX_TEMPO-MIN_TEMPO)/1000;
 		controleur_.updateCommandeSlider();
 		desactiverLesCommandes_();
 		activerLesCommandes_();
@@ -86,10 +88,10 @@ public class MoteurMetronome implements IMoteurMetronome {
 
 	@Override
 	public void setTempsParMesure(int tempsParMesure) {
-		if(tempsParMesure >= 7){
-			tempsParMesure_ = 7;
-		} else if(tempsParMesure <= 2){
-			tempsParMesure_ = 2;
+		if(tempsParMesure >= MAX_TEMPS_PAR_MESURE){
+			tempsParMesure_ = MAX_TEMPS_PAR_MESURE;
+		} else if(tempsParMesure <= MIN_TEMPS_PAR_MESURE){
+			tempsParMesure_ = MIN_TEMPS_PAR_MESURE;
 		} else {
 			tempsParMesure_ = tempsParMesure;
 		}
@@ -109,6 +111,10 @@ public class MoteurMetronome implements IMoteurMetronome {
 		
 		mesureActuelle_++;
 		
+	}
+	
+	public int getTempsParMesure_() {
+		return tempsParMesure_;
 	}
 
 	@Override

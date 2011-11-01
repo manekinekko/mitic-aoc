@@ -112,8 +112,8 @@ public class IHM extends JFrame implements IIHM {
 		hBox1.add(Box.createHorizontalGlue());
 		hBox2.add(demarrer_);
 		hBox2.add(stop_);
-		hBox2.add(inc_);
 		hBox2.add(dec_);
+		hBox2.add(inc_);
 		hBox1.add(Box.createHorizontalGlue());
 
 		add(vBox);
