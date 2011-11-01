@@ -1,5 +1,10 @@
 package metronome;
 
+import java.util.Date;
+
+import metronome.command.CommandeEteindreLed;
+import metronome.core.HorlogeWrapper;
+import metronome.core.IHorloge;
 import metronome.core.IMoteurMetronome;
 import metronome.core.MoteurMetronome;
 
@@ -7,9 +12,12 @@ public class Controleur implements IControleur {
 
 	private IMoteurMetronome moteur_;
 	private IIHM ihm_;
+	private IHorloge horloge_;
+	private long time = 0;
 
 	public Controleur() {
-		moteur_ = new MoteurMetronome(this);
+		horloge_ = new HorlogeWrapper();
+		moteur_ = new MoteurMetronome(this, horloge_);
 		ihm_ = new IHM(this);
 		MetronomeCommandeFactory.creerCommandeSlider(this).execute();
 	}
@@ -20,12 +28,6 @@ public class Controleur implements IControleur {
 
 	public void stopper() {
 		moteur_.setEtatMarche(false);
-	}
-
-	@Override
-	public void marquerTemps() {
-		ihm_.allumerLED(1);
-		ihm_.emettreClick();
 	}
 
 	@Override
@@ -98,6 +100,25 @@ public class Controleur implements IControleur {
 	@Override
 	public IMoteurMetronome getMoteur() {
 		return moteur_;
+	}
+
+	@Override
+	public void marquerTemps() {
+		
+		long newTime = new Date().getTime();
+		System.out.println("ecart avec le dernier marquerTemps:"+(newTime - time));
+		time = newTime;
+		
+		ihm_.allumerLED(1);
+		horloge_.activerApresDelai(new CommandeEteindreLed(this, 1),
+				(float) 0.1);
+
+		ihm_.emettreClick();
+	}
+
+	@Override
+	public void eteindreLed(int led) {
+		ihm_.eteindreLED(led);
 	}
 
 }

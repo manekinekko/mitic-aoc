@@ -3,8 +3,6 @@ package metronome.core;
 import metronome.Clavier;
 import metronome.IAfficheur;
 import metronome.IClavier;
-import metronome.IHM;
-import metronome.IIHM;
 
 public class Materiel {
 	

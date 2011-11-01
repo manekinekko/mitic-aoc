@@ -23,6 +23,7 @@ public class HorlogeWrapper implements IHorloge {
 
 	@Override
 	public void activerApresDelai(ICommand cmd, float delaiEnSecondes) {
+		delaiEnSecondes = delaiEnSecondes * 1000;
 		horloge_.activerApresDelai(cmd, delaiEnSecondes);
 	}
 

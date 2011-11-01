@@ -48,8 +48,8 @@ public class IHM extends JFrame implements IIHM {
 
 		lcd_ = new LCD();
 
-		led1_ = new LED(Color.RED, Color.GRAY);
-		led2_ = new LED(Color.RED, Color.GRAY);
+		led1_ = new LED(Color.RED, Color.BLACK);
+		led2_ = new LED(Color.RED, Color.BLACK);
 
 		JLabel labelLed1 = new JLabel("Led 1");
 		labelLed1.setAlignmentX(CENTER_ALIGNMENT);
