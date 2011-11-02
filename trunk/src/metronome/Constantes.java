@@ -19,5 +19,20 @@ public interface Constantes {
 	 * La valeur par défaut du slider.
 	 */
 	public final static int SLIDER_DEFAULT = 0;
-
+	/**
+	 * La valeur minimale du tempo.
+	 */
+	public static final int MIN_TEMPO = 40;
+	/**
+	 * La valeur maximale du tempo.
+	 */
+	public static final int MAX_TEMPO = 240;
+	/**
+	 * La valeur minimale du temps par mesure.
+	 */
+	public static final int MIN_TEMPS_PAR_MESURE = 2;
+	/**
+	 * La valeur maximale du temps par mesure.
+	 */
+	public static final int MAX_TEMPS_PAR_MESURE = 7;
 }
