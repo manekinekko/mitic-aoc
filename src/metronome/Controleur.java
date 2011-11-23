@@ -15,7 +15,7 @@ import metronome.core.MoteurMetronome;
  * @version 1.0
  * @see IControleur
  */
-public class Controleur implements IControleur {
+public class Controleur implements IControleur, Constantes {
 
 	private IMoteurMetronome moteur_;
 	private IIHM ihm_;
@@ -98,6 +98,7 @@ public class Controleur implements IControleur {
 	@Override
 	public void updateSlider() {
 		int valeur = ihm_.getValeurSlider();
+		valeur = convertirTempo_(valeur);
 		moteur_.setTempo(valeur);
 	}
 
@@ -113,7 +114,20 @@ public class Controleur implements IControleur {
 
 	@Override
 	public void setSlider(int valeur) {
+		valeur = convertirTempo_(valeur);
 		moteur_.setTempo(valeur);
+	}
+
+	private int convertirTempo_(int valeur) {
+		if (valeur < 0) {
+			valeur = MIN_TEMPO;
+		} else if (valeur > 1000) {
+			valeur = MAX_TEMPO;
+		} else {
+			valeur = (int) MIN_TEMPO + valeur * (MAX_TEMPO - MIN_TEMPO) / 1000;
+		}
+		
+		return valeur;
 	}
 
 	@Override

@@ -100,8 +100,7 @@ public class ControleurTest {
 		int valeurSet = ihm_.getValeurSlider();
 		moteur_.setTempo(valeurSet);
 		int valeurGet = moteur_.getTempo();
-		int x = Constantes.MIN_TEMPO + valeurSet * (Constantes.MAX_TEMPO - Constantes.MIN_TEMPO) / 1000;
-		assertEquals(valeurGet, x);
+		assertEquals(valeurGet, valeurSet);
 	}
 
 	@Test
@@ -124,8 +123,7 @@ public class ControleurTest {
 		int valeurSet = 100;
 		moteur_.setTempo(valeurSet);
 		int valeurGet = moteur_.getTempo();
-		int x = Constantes.MIN_TEMPO + valeurSet * (Constantes.MAX_TEMPO - Constantes.MIN_TEMPO) / 1000;
-		assertEquals(valeurGet, x);
+		assertEquals(valeurGet, valeurSet);
 	}
 
 	@Test
