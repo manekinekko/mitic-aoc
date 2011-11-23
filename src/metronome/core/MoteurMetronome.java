@@ -7,9 +7,9 @@ import metronome.command.MetronomeCommandeFactory;
 
 /**
  * Cette classe est le coeur du programme. Elle permet de stocker et de
- * r�cup�rer les diff�rentes valeurs n�cessaires au bon fonctionnement du
- * m�tronome, comme son �tat, le tempo, le nombre de temps par mesure...<br/>
- * <b>En d'autres termes cette classe repr�sente le Model du pattern MVC.</b>
+ * récupérer les différentes valeurs nécessaires au bon fonctionnement du
+ * métronome, comme son état, le tempo, le nombre de temps par mesure...<br/>
+ * <b>En d'autres termes cette classe représente le Model du pattern MVC.</b>
  * 
  * @author Wassim Chegham <contact@cheghamwassim.com>
  * @author Gurval Le Bouter <gurval.lebouter@gmail.com>
@@ -32,10 +32,10 @@ public class MoteurMetronome implements IMoteurMetronome, Constantes {
 
 	/**
 	 * Le constructeur du metronome. Permet d'initialiser les valeurs ainsi que
-	 * les diff�rentes commandes.
+	 * les différentes commandes.
 	 * 
-	 * @param controleur le controleur � qui appartient ce moteur.
-	 * @param horloge l'horloge destin�e � activer les commandes.
+	 * @param controleur le contrôleur à qui appartient ce moteur.
+	 * @param horloge l'horloge destinée à activer les commandes.
 	 * @since 1.0
 	 */
 	public MoteurMetronome(IControleur controleur, IHorloge horloge) {
@@ -93,14 +93,14 @@ public class MoteurMetronome implements IMoteurMetronome, Constantes {
 	}
 
 	/**
-	 * Desactive toutes les commandes activ�es p�riodiquement de l'horloge.
+	 * Désactive toutes les commandes activées périodiquement de l'horloge.
 	 */
 	private void desactiverLesCommandes_() {
 		horloge_.desactiver(commandeTic_);
 	}
 
 	/**
-	 * Active p�riodiquement la commande tic (qui apelle la methode traiterCommandeTic).
+	 * Active périodiquement la commande tic (qui apelle la méthode traiterCommandeTic).
 	 */
 	private void activerLesCommandes_() {
 
