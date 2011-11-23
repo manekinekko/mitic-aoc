@@ -2,6 +2,7 @@ package metronome.test;
 
 import static org.junit.Assert.*;
 
+import metronome.Constantes;
 import metronome.Controleur;
 import metronome.IControleur;
 import metronome.IIHM;
@@ -77,32 +78,54 @@ public class ControleurTest {
 	}
 
 	@Test
+	/**
+	 * Not yet implemented
+	 */
 	public void testUpdateCommandeInc() {
-		
+		assertTrue(true);		
 	}
 
 	@Test
+	/**
+	 * Not yet implemented
+	 */
 	public void testUpdateCommandeDec() {
+		assertTrue(true);		
 	}
 
 	@Test
 	public void testUpdateSlider() {
 		
+		ihm_.getSlider().setValue(100);
+		int valeurSet = ihm_.getValeurSlider();
+		moteur_.setTempo(valeurSet);
+		int valeurGet = moteur_.getTempo();
+		int x = Constantes.MIN_TEMPO + valeurSet * (Constantes.MAX_TEMPO - Constantes.MIN_TEMPO) / 1000;
+		assertEquals(valeurGet, x);
 	}
 
 	@Test
 	public void testUpdateCommandeSlider() {
-		
+		int tempo = moteur_.getTempo();
+		ihm_.afficherTempo(tempo);
+		assertEquals(tempo+"", ihm_.getLCD().getText());
 	}
 
 	@Test
+	/**
+	 * Not yet implemented
+	 */
 	public void testUpdateCommandeMarqueurTemps() {
-		
+		assertTrue(true);		
 	}
 
 	@Test
 	public void testSetSlider() {
-		
+		int valeurSet = 100;
+		moteur_.setTempo(valeurSet);
+		int valeurGet = moteur_.getTempo();
+		int x = Constantes.MIN_TEMPO + valeurSet * (Constantes.MAX_TEMPO - Constantes.MIN_TEMPO) / 1000;
+		assertEquals(valeurGet, x);
 	}
 
 	@Test
@@ -117,17 +140,22 @@ public class ControleurTest {
 
 	@Test
 	public void testMarquerTemps() {
-		fail("Not yet implemented");
+		ihm_.allumerLED(1);
+		assertTrue(ihm_.getLED(1).estAllumee());		
 	}
 
 	@Test
 	public void testEteindreLed() {
-		fail("Not yet implemented");
+		ihm_.eteindreLED(1);
+		ihm_.eteindreLED(2);
+		assertFalse(ihm_.getLED(1).estAllumee());
+		assertFalse(ihm_.getLED(2).estAllumee());
 	}
 
 	@Test
 	public void testMarquerMesure() {
-		fail("Not yet implemented");
+		ihm_.allumerLED(2);
+		assertTrue(ihm_.getLED(2).estAllumee());
 	}
 
 }

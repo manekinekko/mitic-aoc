@@ -32,6 +32,7 @@ public class IHM extends JFrame implements IIHM {
 
 	private static final long serialVersionUID = 1L;
 	private JTextField lcd_;
+
 	private LED led1_, led2_;
 	private JButton demarrer_, stop_, inc_, dec_;
 	private JSlider slider_;
@@ -146,6 +147,10 @@ public class IHM extends JFrame implements IIHM {
 						+ hBox2.getPreferredSize().height + 10));
 	}
 
+	public JTextField getLCD() {
+		return lcd_;
+	}
+	
 	@Override
 	public void afficherTempo(int valeur) {
 		lcd_.setText("" + valeur);
@@ -197,6 +202,14 @@ public class IHM extends JFrame implements IIHM {
 			led1_.allumer();
 		else if (led == 2)
 			led2_.allumer();
+	}
+
+	public LED getLED(int num) {
+		switch(num){
+			case 1: return led1_;
+			case 2: return led2_;
+		}
+		return null;
 	}
 
 	@Override

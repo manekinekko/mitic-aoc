@@ -14,21 +14,29 @@ import javax.swing.JRadioButton;
 public class LED extends JRadioButton implements ILED {
 
 	private static final long serialVersionUID = 1L;
+	private boolean estAllumee_;
 
 	/**
 	 * Constructeur de la LED.
 	 */
 	public LED() {
 		setSelected(false);
+		estAllumee_ = false;
 	}
 
+	public boolean estAllumee(){
+		return estAllumee_;
+	}
+	
 	@Override
 	public synchronized void allumer() {
 		setSelected(true);
+		estAllumee_ = true;
 	}
 
 	@Override
 	public synchronized void eteindre() {
 		setSelected(false);
+		estAllumee_ = false;
 	}
 }

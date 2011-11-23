@@ -2,6 +2,7 @@ package metronome;
 
 import javax.swing.JButton;
 import javax.swing.JSlider;
+import javax.swing.JTextField;
 
 /**
  * Cette interface dÃ©finit les mÃ©thodes Ã  implÃ©menter par la classe IHM.
@@ -85,5 +86,21 @@ public interface IIHM {
 	 * @since 1.0
 	 */
 	public int getValeurSlider();
+	
+	/**
+	 * Récupère l'objet de la zone d'affichage correspondant au LCD
+	 * @return l'objet représentant le LCD
+	 * @since 1.0
+	 */
+	public JTextField getLCD();
+	
+	/**
+	 * Récupère l'objet LED
+	 * 
+	 * @param num Le numéro de la LED à récupèrer
+	 * @return La LED à récupérer
+	 * @since 1.0
+	 */
+	public LED getLED(int num);
 	
 }
