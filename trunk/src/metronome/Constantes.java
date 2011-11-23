@@ -4,6 +4,7 @@ package metronome;
  * Cette interface définit les constantes utilisées dans le projet.
  * 
  * @author Wassim Chegham <contact@cheghamwassim.com>
+ * @author Gurval Le Bouter <gurval.lebouter@gmail.com>
  * 
  */
 public interface Constantes {
