@@ -49,29 +49,6 @@ public interface IControleur {
 	public void updateEtatMoteur();
 
 	/**
-	 * Le moteur notifie le contrôleur de l'incrémentation du nombre de temps
-	 * par mesure.
-	 * 
-	 * @since 1.0
-	 */
-	public void updateCommandeInc();
-
-	/**
-	 * Le moteur notifie le contrôleur de la décrémentation du nombre de temps
-	 * par mesure.
-	 * 
-	 * @since 1.0
-	 */
-	public void updateCommandeDec();
-
-	/**
-	 * TODO: supprimer cette méthode?
-	 * 
-	 * @since 1.0
-	 */
-	public void updateCommandeMarqueurTemps();
-
-	/**
 	 * Le moteur notifie le contrôleur du changement de la valeur du tempo.
 	 * 
 	 * @since 1.0
