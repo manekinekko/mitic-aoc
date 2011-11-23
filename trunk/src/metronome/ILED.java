@@ -4,6 +4,7 @@ package metronome;
  * Cette interface définit les opérations à implémenter dans la classe LED.
  * 
  * @author Wassim Chegham <contact@cheghamwassim.com>
+ * @author Gurval Le Bouter <gurval.lebouter@gmail.com>
  * @version 1.0
  */
 public interface ILED {

@@ -94,6 +94,7 @@ public class MoteurMetronome implements IMoteurMetronome, Constantes {
 
 	/**
 	 * Désactive toutes les commandes activées périodiquement de l'horloge.
+	 * @since 1.0
 	 */
 	private void desactiverLesCommandes_() {
 		horloge_.desactiver(commandeTic_);
@@ -101,6 +102,7 @@ public class MoteurMetronome implements IMoteurMetronome, Constantes {
 
 	/**
 	 * Active périodiquement la commande tic (qui apelle la méthode traiterCommandeTic).
+	 * @since 1.0
 	 */
 	private void activerLesCommandes_() {
 

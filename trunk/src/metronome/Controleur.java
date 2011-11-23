@@ -23,6 +23,7 @@ public class Controleur implements IControleur {
 
 	/**
 	 * Constructeur du controleur
+	 * @since 1.0
 	 */
 	public Controleur() {
 		horloge_ = new HorlogeWrapper();
@@ -71,6 +72,7 @@ public class Controleur implements IControleur {
 	/**
 	 * Active ou désactive les boutons INC/DEC de l'IHM en fonction du nombre de
 	 * temps par mesure.
+	 * @since 1.0
 	 */
 	private void changeEtatBouttonsIncDec() {
 		if (moteur_.getTempsParMesure() > MoteurMetronome.MIN_TEMPS_PAR_MESURE) {
