@@ -2,7 +2,6 @@ package metronome.test;
 
 import static org.junit.Assert.*;
 
-import metronome.Constantes;
 import metronome.Controleur;
 import metronome.IControleur;
 import metronome.IIHM;

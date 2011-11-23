@@ -21,7 +21,7 @@ public interface ILED {
 	public void eteindre();
 	
 	/**
-	 * Récupère l'etat lumineux de la LED
+	 * RÃ©cupÃ¨re l'etat lumineux de la LED
 	 * @return True si la LED est allumee, False sinon.
 	 */
 	public boolean estAllumee();

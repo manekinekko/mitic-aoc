@@ -3,7 +3,7 @@ package metronome;
 import metronome.core.IMoteurMetronome;
 
 /**
- * Cette interface dÃ©finit les mÃ©thodes Ã  implÃ©menter par la classe Controleur.
+ * Cette interface définit les méthodes à implémenter par la classe Controleur.
  * 
  * @author Wassim Chegham <contact@cheghamwassim.com>
  * @author Gurval Le Bouter <gurval.lebouter@gmail.com>
@@ -12,7 +12,7 @@ import metronome.core.IMoteurMetronome;
 public interface IControleur {
 
 	/**
-	 * DÃ©marre le moteur.
+	 * Démarre le moteur.
 	 * 
 	 * @since 1.0
 	 */
@@ -26,14 +26,14 @@ public interface IControleur {
 	public void stopper();
 
 	/**
-	 * MÃ©thode appelÃ©e par l'horloge pour marquer un temps.
+	 * Méthode appelée par l'horloge pour marquer un temps.
 	 * 
 	 * @since 1.0
 	 */
 	public void marquerTemps();
 
 	/**
-	 * La valeur du slider a changÃ©, mise a jour du tempo dans le moteur.
+	 * La valeur du slider a changé, mise a jour du tempo dans le moteur.
 	 * 
 	 * @param valeur
 	 * @since 1.0
@@ -41,15 +41,15 @@ public interface IControleur {
 	public void setSlider(int valeur);
 
 	/**
-	 * Le moteur notifie le contrÃ´leur du changement de l'Ã©tat du moteur
-	 * (dÃ©marrÃ© ou stoppÃ©).
+	 * Le moteur notifie le contrôleur du changement de l'état du moteur
+	 * (démarré ou stoppé).
 	 * 
 	 * @since 1.0
 	 */
 	public void updateEtatMoteur();
 
 	/**
-	 * Le moteur notifie le contrÃ´leur de l'incrÃ©mentation du nombre de temps
+	 * Le moteur notifie le contrôleur de l'incrémentation du nombre de temps
 	 * par mesure.
 	 * 
 	 * @since 1.0
@@ -57,7 +57,7 @@ public interface IControleur {
 	public void updateCommandeInc();
 
 	/**
-	 * Le moteur notifie le contrÃ´leur de la dÃ©crÃ©mentation du nombre de temps
+	 * Le moteur notifie le contrôleur de la décrémentation du nombre de temps
 	 * par mesure.
 	 * 
 	 * @since 1.0
@@ -65,31 +65,31 @@ public interface IControleur {
 	public void updateCommandeDec();
 
 	/**
-	 * TODO: supprimer cette mÃ©thode?
+	 * TODO: supprimer cette méthode?
 	 * 
 	 * @since 1.0
 	 */
 	public void updateCommandeMarqueurTemps();
 
 	/**
-	 * Le moteur notifie le contrÃ´leur du changement de la valeur du tempo.
+	 * Le moteur notifie le contrôleur du changement de la valeur du tempo.
 	 * 
 	 * @since 1.0
 	 */
 	public void updateCommandeSlider();
 
 	/**
-	 * Retourne l'IHM instanciÃ©e dans le contrÃ´leur.
+	 * Retourne l'IHM instanciée dans le contrôleur.
 	 * 
-	 * @return ihm l'ihm du contrÃ´leur.
+	 * @return ihm l'ihm du contrôleur.
 	 * @since 1.0
 	 */
 	public IIHM getIHM();
 
 	/**
-	 * Retourne le moteur instanciÃ© dans le contrÃ´leur.
+	 * Retourne le moteur instancié dans le contrôleur.
 	 * 
-	 * @return moteur le moteur du contrÃ´leur.
+	 * @return moteur le moteur du contrôleur.
 	 * @since 1.0
 	 */
 	public IMoteurMetronome getMoteur();
@@ -102,29 +102,29 @@ public interface IControleur {
 	public void updateSlider();
 
 	/**
-	 * IncrÃ©mente le nombre de temps par mesure dans le moteur.
+	 * Incrémente le nombre de temps par mesure dans le moteur.
 	 * 
 	 * @since 1.0
 	 */
 	public void incrementer();
 
 	/**
-	 * DÃ©crÃ©mente le nombre de temps par mesure dans le moteur.
+	 * Décrémente le nombre de temps par mesure dans le moteur.
 	 * 
 	 * @since 1.0
 	 */
 	public void decrementer();
 
 	/**
-	 * Ã‰teint une led dans l'IHM.
+	 * Éteint une led dans l'IHM.
 	 * 
-	 * @param led la led Ã  Ã©teindre.
+	 * @param led la led à éteindre.
 	 * @since 1.0
 	 */
 	public void eteindreLed(int led);
 
 	/**
-	 * MÃ©thode appelÃ©e par l'horloge pour marquer la mesure.
+	 * Méthode appelée par l'horloge pour marquer la mesure.
 	 * 
 	 * @since 1.0
 	 */
