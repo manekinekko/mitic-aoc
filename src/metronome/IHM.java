@@ -24,6 +24,7 @@ import metronome.core.EmetteurSonore;
  * <b>En d'autres termes cette classe représente la Vue du pattern MVC.</b> 
  * 
  * @author Wassim Chegham <contact@cheghamwassim.com>
+ * @author Gurval Le Bouter <gurval.lebouter@gmail.com>
  * @version 1.0
  * @see IIHM
  */
@@ -41,6 +42,7 @@ public class IHM extends JFrame implements IIHM {
 	 * Le constructeur de la classe IHM peremet d'initialiser la construction
 	 * de l'IHM.
 	 * @param controleur Le controleur associé à cette vue.
+	 * @since 1.0
 	 */
 	public IHM(IControleur controleur) {
 		super("Metronome");
@@ -52,6 +54,7 @@ public class IHM extends JFrame implements IIHM {
 
 	/**
 	 * Cette méthode contruit l'IHM.
+	 * @since 1.0
 	 */
 	private void construireIHM_() {
 
@@ -67,8 +70,8 @@ public class IHM extends JFrame implements IIHM {
 
 		lcd_ = new LCD();
 
-		led1_ = new LED(Color.RED, Color.BLACK);
-		led2_ = new LED(Color.RED, Color.BLACK);
+		led1_ = new LED();
+		led2_ = new LED();
 
 		JLabel labelLed1 = new JLabel("Led 1");
 		labelLed1.setAlignmentX(CENTER_ALIGNMENT);

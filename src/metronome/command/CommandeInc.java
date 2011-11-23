@@ -2,7 +2,6 @@ package metronome.command;
 
 import metronome.IControleur;
 
-
 public class CommandeInc implements ICommand {
 
 	private IControleur controleur_;

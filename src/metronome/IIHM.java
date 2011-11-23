@@ -46,36 +46,43 @@ public interface IIHM {
 	public void eteindreLED(int led);
 	/**
 	 * Permet d'émettre un son à chaque marquage de temps.
+	 * @since 1.0
 	 */
 	public void emettreClick();
 	/**
 	 * Récupère le bouton "Démarrer".
 	 * @return Le bouton "Démarrer".
+	 * @since 1.0
 	 */
 	public JButton getBoutonDemarrer();
 	/**
 	 * Récupère le bouton "Stop".
 	 * @return Le bouton "Stop".
+	 * @since 1.0
 	 */
 	public JButton getBoutonStop();
 	/**
 	 * Récupère le bouton "Inc".
 	 * @return Le bouton "Inc".
+	 * @since 1.0
 	 */
 	public JButton getBoutonInc();
 	/**
 	 * Récupère le bouton "Dec".
 	 * @return Le bouton "Dec".
+	 * @since 1.0
 	 */
 	public JButton getBoutonDec();
 	/**
 	 * Récupère le slider.
 	 * @return Le slider.
+	 * @since 1.0
 	 */
 	public JSlider getSlider();
 	/**
 	 * Récupère la valeur courante du slider.
 	 * @return La valeur courante du slider.
+	 * @since 1.0
 	 */
 	public int getValeurSlider();
 	
