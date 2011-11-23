@@ -11,6 +11,7 @@ public interface IEmetteurSonore {
 
 	/**
 	 * Emet un click sonore.
+	 * @since 1.0
 	 */
 	public void emettreClick();
 	

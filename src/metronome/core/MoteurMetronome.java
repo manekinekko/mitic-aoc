@@ -101,7 +101,7 @@ public class MoteurMetronome implements IMoteurMetronome, Constantes {
 	}
 
 	/**
-	 * Active périodiquement la commande tic (qui apelle la méthode traiterCommandeTic).
+	 * Active périodiquement la commande tic (qui appelle la méthode traiterCommandeTic).
 	 * @since 1.0
 	 */
 	private void activerLesCommandes_() {
