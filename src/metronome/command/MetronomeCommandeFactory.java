@@ -14,7 +14,7 @@ public class MetronomeCommandeFactory {
 
 	/**
 	 * Créer une commande CommandeTic.
-	 * @param controleur le controleur de l'application.
+	 * @param controleur le contrôleur de l'application.
 	 * @return une CommandeTic.
 	 */
 	public static ICommand creerCommandeTic(IControleur controleur) {
@@ -23,7 +23,7 @@ public class MetronomeCommandeFactory {
 
 	/**
 	 * Créer une commande CommandeMarqueurTemps.
-	 * @param controleur le controleur de l'application.
+	 * @param controleur le contrôleur de l'application.
 	 * @return une CommandeMarqueurTemps.
 	 */
 	public static ICommand creerCommandeMarqueurTemps(IControleur controleur) {
@@ -32,7 +32,7 @@ public class MetronomeCommandeFactory {
 
 	/**
 	 * Créer une commande CommandeMarqueurMesure.
-	 * @param controleur le controleur de l'application.
+	 * @param controleur le contrôleur de l'application.
 	 * @return une CommandeMarqueurMesure.
 	 */
 	public static ICommand creerCommandeMarqueurMesure(IControleur controleur) {
@@ -41,7 +41,7 @@ public class MetronomeCommandeFactory {
 
 	/**
 	 * Créer une commande CommandeDemarrer.
-	 * @param controleur le controleur de l'application.
+	 * @param controleur le contrôleur de l'application.
 	 * @return une CommandeDemarrer.
 	 */
 	public static ICommand creerCommandeDemarrer(IControleur controleur) {
@@ -50,7 +50,7 @@ public class MetronomeCommandeFactory {
 
 	/**
 	 * Créer une commande CommandeStop.
-	 * @param controleur le controleur de l'application.
+	 * @param controleur le contrôleur de l'application.
 	 * @return une CommandeStop.
 	 */
 	public static ICommand creerCommandeStop(IControleur controleur) {
@@ -59,7 +59,7 @@ public class MetronomeCommandeFactory {
 
 	/**
 	 * Créer une commande CommandeInc.
-	 * @param controleur le controleur de l'application.
+	 * @param controleur le contrôleur de l'application.
 	 * @return une CommandeInc.
 	 */
 	public static ICommand creerCommandeInc(IControleur controleur) {
@@ -68,7 +68,7 @@ public class MetronomeCommandeFactory {
 
 	/**
 	 * Créer une commande CommandeDec.
-	 * @param controleur le controleur de l'application.
+	 * @param controleur le contrôleur de l'application.
 	 * @return une CommandeDec.
 	 */
 	public static ICommand creerCommandeDec(IControleur controleur) {
@@ -77,7 +77,7 @@ public class MetronomeCommandeFactory {
 
 	/**
 	 * Créer une commande CommandeSlider.
-	 * @param controleur le controleur de l'application.
+	 * @param controleur le contrôleur de l'application.
 	 * @return une CommandeSlider.
 	 */
 	public static ICommand creerCommandeSlider(IControleur controleur) {
@@ -86,7 +86,7 @@ public class MetronomeCommandeFactory {
 
 	/**
 	 * Créer une commande CommandeEteindreLed.
-	 * @param controleur le controleur de l'application.
+	 * @param controleur le contrôleur de l'application.
 	 * @return une CommandeEteindreLed.
 	 */
 	public static ICommand creerCommandeEteindreLed(IControleur controleur, int led) {

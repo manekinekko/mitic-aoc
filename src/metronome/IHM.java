@@ -1,6 +1,5 @@
 package metronome;
 
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -42,7 +41,7 @@ public class IHM extends JFrame implements IIHM {
 	/**
 	 * Le constructeur de la classe IHM peremet d'initialiser la construction
 	 * de l'IHM.
-	 * @param controleur Le controleur associé à cette vue.
+	 * @param controleur Le contrôleur associé à cette vue.
 	 * @since 1.0
 	 */
 	public IHM(IControleur controleur) {
@@ -204,6 +203,7 @@ public class IHM extends JFrame implements IIHM {
 			led2_.allumer();
 	}
 
+	@Override
 	public LED getLED(int num) {
 		switch(num){
 			case 1: return led1_;

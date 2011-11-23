@@ -8,6 +8,7 @@ import javax.swing.JTextField;
  * Cette interface d√©finit les m√©thodes √† impl√©menter par la classe IHM.
  * 
  * @author Wassim Chegham <contact@cheghamwassim.com>
+ * @author Gurval Le Bouter <gurval.lebouter@gmail.com>
  * @version 1.0
  *
  */
@@ -88,17 +89,17 @@ public interface IIHM {
 	public int getValeurSlider();
 	
 	/**
-	 * RÈcupËre l'objet de la zone d'affichage correspondant au LCD
-	 * @return l'objet reprÈsentant le LCD
+	 * R√©cup√®re l'objet de la zone d'affichage correspondant au LCD
+	 * @return l'objet repr√©sentant le LCD
 	 * @since 1.0
 	 */
 	public JTextField getLCD();
 	
 	/**
-	 * RÈcupËre l'objet LED
+	 * R√©cup√®re l'objet LED
 	 * 
-	 * @param num Le numÈro de la LED ‡ rÈcupËrer
-	 * @return La LED ‡ rÈcupÈrer
+	 * @param num Le num√©ro de la LED √† r√©cup√©rer
+	 * @return La LED √† r√©cup√©rer
 	 * @since 1.0
 	 */
 	public LED getLED(int num);
