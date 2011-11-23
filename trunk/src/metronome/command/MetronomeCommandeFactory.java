@@ -58,24 +58,6 @@ public class MetronomeCommandeFactory {
 	}
 
 	/**
-	 * Créer une commande CommandeInc.
-	 * @param controleur le contrôleur de l'application.
-	 * @return une CommandeInc.
-	 */
-	public static ICommand creerCommandeInc(IControleur controleur) {
-		return new CommandeInc(controleur);
-	}
-
-	/**
-	 * Créer une commande CommandeDec.
-	 * @param controleur le contrôleur de l'application.
-	 * @return une CommandeDec.
-	 */
-	public static ICommand creerCommandeDec(IControleur controleur) {
-		return new CommandeDec(controleur);
-	}
-
-	/**
 	 * Créer une commande CommandeSlider.
 	 * @param controleur le contrôleur de l'application.
 	 * @return une CommandeSlider.

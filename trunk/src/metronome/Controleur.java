@@ -88,14 +88,6 @@ public class Controleur implements IControleur, Constantes {
 	}
 
 	@Override
-	public void updateCommandeInc() {
-	}
-
-	@Override
-	public void updateCommandeDec() {
-	}
-
-	@Override
 	public void updateSlider() {
 		int valeur = ihm_.getValeurSlider();
 		valeur = convertirTempo_(valeur);
@@ -106,10 +98,6 @@ public class Controleur implements IControleur, Constantes {
 	public void updateCommandeSlider() {
 		int tempo = moteur_.getTempo();
 		ihm_.afficherTempo(tempo);
-	}
-
-	@Override
-	public void updateCommandeMarqueurTemps() {
 	}
 
 	@Override
