@@ -60,13 +60,7 @@ public class MoteurMetronome implements IMoteurMetronome, Constantes {
 
 	@Override
 	public void setTempo(int tempo) {
-		if (tempo < 0) {
-			tempo_ = MIN_TEMPO;
-		} else if (tempo > 1000) {
-			tempo_ = MAX_TEMPO;
-		} else {
-			tempo_ = (int) MIN_TEMPO + tempo * (MAX_TEMPO - MIN_TEMPO) / 1000;
-		}
+		tempo_ = tempo;
 
 		controleur_.updateCommandeSlider();
 		desactiverLesCommandes_();
