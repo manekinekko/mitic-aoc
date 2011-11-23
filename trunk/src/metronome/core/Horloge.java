@@ -4,7 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.Timer;
 import metronome.command.ICommand;
-
+ 
 public class Horloge implements IHorloge {
 
 	private Timer timer_1, timer_2;
