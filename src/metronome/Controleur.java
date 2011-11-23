@@ -132,7 +132,6 @@ public class Controleur implements IControleur {
 		ihm_.allumerLED(1);
 		horloge_.activerApresDelai(MetronomeCommandeFactory.creerCommandeEteindreLed(this, 1),
 				0.15F);
-
 		ihm_.emettreClick();
 	}
 
