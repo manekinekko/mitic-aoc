@@ -34,16 +34,25 @@ public class Controleur implements IControleur, Constantes {
 		MetronomeCommandeFactory.creerCommandeSlider(this).execute();
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void demarrer() {
 		moteur_.setEtatMarche(true);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void stopper() {
 		moteur_.setEtatMarche(false);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void updateEtatMoteur() {
 		if (moteur_.getEtatMarche()) {
@@ -57,12 +66,18 @@ public class Controleur implements IControleur, Constantes {
 		}
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void incrementer() {
 		moteur_.setTempsParMesure(moteur_.getTempsParMesure() + 1);
 		changeEtatBouttonsIncDec();
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void decrementer() {
 		moteur_.setTempsParMesure(moteur_.getTempsParMesure() - 1);
@@ -87,6 +102,9 @@ public class Controleur implements IControleur, Constantes {
 		}
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void updateSlider() {
 		int valeur = ihm_.getValeurSlider();
@@ -94,18 +112,29 @@ public class Controleur implements IControleur, Constantes {
 		moteur_.setTempo(valeur);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void updateCommandeSlider() {
 		int tempo = moteur_.getTempo();
 		ihm_.afficherTempo(tempo);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void setSlider(int valeur) {
 		valeur = convertirTempo_(valeur);
 		moteur_.setTempo(valeur);
 	}
 
+	/**
+	 * Convertit la la valeur rendu par le slider vers le tempo correspondant
+	 * @param valeur la valeur du slider
+	 * @return le tempo
+	 */
 	private int convertirTempo_(int valeur) {
 		if (valeur < 0) {
 			valeur = MIN_TEMPO;
@@ -118,16 +147,25 @@ public class Controleur implements IControleur, Constantes {
 		return valeur;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public IIHM getIHM() {
 		return ihm_;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public IMoteurMetronome getMoteur() {
 		return moteur_;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void marquerTemps() {
 
@@ -137,11 +175,17 @@ public class Controleur implements IControleur, Constantes {
 		ihm_.emettreClick();
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void eteindreLed(int led) {
 		ihm_.eteindreLED(led);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void marquerMesure() {
 		ihm_.allumerLED(2);

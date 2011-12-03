@@ -53,11 +53,17 @@ public class MoteurMetronome implements IMoteurMetronome, Constantes {
 		commandeTic_ = MetronomeCommandeFactory.creerCommandeTic(controleur_);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public int getTempo() {
 		return tempo_;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void setTempo(int tempo) {
 		tempo_ = tempo;
@@ -67,11 +73,17 @@ public class MoteurMetronome implements IMoteurMetronome, Constantes {
 		activerLesCommandes_();
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public boolean getEtatMarche() {
 		return etatMarche_;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void setEtatMarche(boolean etatMarche) {
 		etatMarche_ = etatMarche;
@@ -106,11 +118,17 @@ public class MoteurMetronome implements IMoteurMetronome, Constantes {
 		}
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public int getTempsParMesure() {
 		return tempsParMesure_;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void setTempsParMesure(int tempsParMesure) {
 		if (tempsParMesure >= MAX_TEMPS_PAR_MESURE) {
@@ -122,6 +140,9 @@ public class MoteurMetronome implements IMoteurMetronome, Constantes {
 		}
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void traiterCommandeTic() {
 		commandeMarqueurTemps_.execute();

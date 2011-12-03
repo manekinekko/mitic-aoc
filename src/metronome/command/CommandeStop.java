@@ -17,13 +17,15 @@ public class CommandeStop implements ICommand {
 	/**
 	 * Constructeur de la commande.
 	 * @param controleur le contrôleur de l'application.
-	 * @param led le numéro de la led à éteindre.
 	 * @since 1.0
 	 */
 	public CommandeStop(IControleur controleur) {
 		controleur_ =  controleur;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void execute() {
 		controleur_.stopper();

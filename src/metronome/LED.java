@@ -24,16 +24,26 @@ public class LED extends JRadioButton implements ILED {
 		estAllumee_ = false;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
 	public boolean estAllumee(){
 		return estAllumee_;
 	}
 	
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public synchronized void allumer() {
 		setSelected(true);
 		estAllumee_ = true;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public synchronized void eteindre() {
 		setSelected(false);
