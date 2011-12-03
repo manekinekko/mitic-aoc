@@ -4,6 +4,7 @@ import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 import javax.swing.Box;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -11,6 +12,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSlider;
 import javax.swing.JTextField;
+
+import metronome.adapter.Clavier;
+import metronome.adapter.Materiel;
 import metronome.command.CommandeChangeListener;
 import metronome.command.CommandeMouseListener;
 import metronome.command.MetronomeCommandeFactory;
@@ -36,6 +40,7 @@ public class IHM extends JFrame implements IIHM {
 	private JSlider slider_;
 	private IControleur controleur_;
 	private EmetteurSonore emetteur_;
+	private Clavier clavier;
 
 	/**
 	 * Le constructeur de la classe IHM peremet d'initialiser la construction
@@ -49,6 +54,8 @@ public class IHM extends JFrame implements IIHM {
 		controleur_ = controleur;
 		emetteur_ = new EmetteurSonore();
 		construireIHM_();
+		
+		clavier = (Clavier) Materiel.getClavier();
 	}
 
 	/**
@@ -80,15 +87,18 @@ public class IHM extends JFrame implements IIHM {
 		demarrer_ = new JButton("START");
 		stop_ = new JButton("STOP");
 		inc_ = new JButton("INC");
+		
+		//TODO utiliser la factory pour créer cette commande?
 		inc_.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				controleur_.incrementer();
+				clavier.setTouchePresse(3);
 			}
 
 		});
 		dec_ = new JButton("DEC");
+		//TODO utiliser la factory pour créer cette commande?
 		dec_.addActionListener(new ActionListener() {
 
 			@Override

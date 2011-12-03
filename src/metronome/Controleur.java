@@ -1,5 +1,6 @@
 package metronome;
 
+import metronome.adapter.Adapter;
 import metronome.command.MetronomeCommandeFactory;
 import metronome.core.HorlogeWrapper;
 import metronome.core.IHorloge;
@@ -19,6 +20,7 @@ public class Controleur implements IControleur, Constantes {
 	private IMoteurMetronome moteur_;
 	private IIHM ihm_;
 	private IHorloge horloge_;
+	private Adapter adapter_;
 
 	/**
 	 * Constructeur du controleur
@@ -31,6 +33,7 @@ public class Controleur implements IControleur, Constantes {
 		changeEtatBouttonsIncDec();
 		// mise a jour de la valeur du tempo de l'IHM
 		MetronomeCommandeFactory.creerCommandeSlider(this).execute();
+		adapter_ = new Adapter(this);
 	}
 
 	/**
@@ -71,6 +74,7 @@ public class Controleur implements IControleur, Constantes {
 	@Override
 	public void incrementer() {
 		moteur_.setTempsParMesure(moteur_.getTempsParMesure() + 1);
+		System.out.println("Controleur.incrementer(), temps:"+moteur_.getTempsParMesure());
 		changeEtatBouttonsIncDec();
 	}
 
