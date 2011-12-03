@@ -5,8 +5,7 @@ import metronome.IControleur;
 /**
  * Commande exécutée pour démarrer le moteur.
  * 
- * @author Wassim Chegham <contact@cheghamwassim.com>
- * @author Gurval Le Bouter <gurval.lebouter@gmail.com>
+ * @author <ul><li>Wassim Chegham (<a href=mailto:contact@cheghamwassim.com>contact@cheghamwassim.com</a>)</li><li>Gurval Le Bouter (<a href=mailto:gurval.lebouter@gmail.com>gurval.lebouter@gmail.com</a>)</li></ul>
  * @version 1.0
  * @see ICommand
  */
