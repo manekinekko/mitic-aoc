@@ -93,6 +93,9 @@ public class EmetteurSonore implements IEmetteurSonore {
 
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void emettreClick() {
 		AudioPlayer ap = new AudioPlayer();

@@ -26,6 +26,9 @@ public class CommandeEteindreLed implements ICommand {
 		led_ = led;
 	}
 	
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void execute() {
 		controleur_.eteindreLed(led_);

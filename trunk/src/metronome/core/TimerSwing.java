@@ -31,6 +31,9 @@ public class TimerSwing implements IHorloge {
 		timerDelai_ = new Timer(0, null);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void activerPeriodiquement(final ICommand cmd,
 			final float periodeEnMilliSeconde) {
@@ -47,6 +50,9 @@ public class TimerSwing implements IHorloge {
 		timerPeriodique_.restart();
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void activerApresDelai(final ICommand cmd,
 			final float delaiEnMilliSecondes) {
@@ -62,6 +68,9 @@ public class TimerSwing implements IHorloge {
 		timerDelai_.start();
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void desactiver(ICommand cmd) {
 		timerPeriodique_.stop();

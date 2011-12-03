@@ -150,51 +150,81 @@ public class IHM extends JFrame implements IIHM {
 		return lcd_;
 	}
 	
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void afficherTempo(int valeur) {
 		lcd_.setText("" + valeur);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public JButton getBoutonDemarrer() {
 		return demarrer_;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public JButton getBoutonStop() {
 		return stop_;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public JButton getBoutonInc() {
 		return inc_;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public JButton getBoutonDec() {
 		return dec_;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public JSlider getSlider() {
 		return slider_;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void setEtatBouton(JButton bouton, boolean etat) {
 		bouton.setEnabled(etat);
 	}
 	
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void setEtatSlider(JSlider slider, boolean etat) {
 		slider.setEnabled(etat);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public int getValeurSlider() {
 		return slider_.getValue();
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void allumerLED(int led) {
 		if (led == 1)
@@ -203,6 +233,9 @@ public class IHM extends JFrame implements IIHM {
 			led2_.allumer();
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public LED getLED(int num) {
 		switch(num){
@@ -212,6 +245,9 @@ public class IHM extends JFrame implements IIHM {
 		return null;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void eteindreLED(int led) {
 		if (led == 1)
@@ -220,6 +256,9 @@ public class IHM extends JFrame implements IIHM {
 			led2_.eteindre();
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void emettreClick() {
 		emetteur_.emettreClick();

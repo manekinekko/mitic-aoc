@@ -25,6 +25,9 @@ public class CommandeChangeListener implements ChangeListener {
 		commande_ = commande;
 	}
 	
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void stateChanged(ChangeEvent event) {
 		JSlider source = (JSlider)event.getSource();

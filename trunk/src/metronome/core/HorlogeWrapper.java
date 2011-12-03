@@ -24,6 +24,9 @@ public class HorlogeWrapper implements IHorloge {
 		horloge_ = new TimerSwing();
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void activerPeriodiquement(ICommand cmd, float periodeEnSeconde) {
 		if (periodeEnSeconde > 0) {
@@ -35,12 +38,18 @@ public class HorlogeWrapper implements IHorloge {
 		}
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void activerApresDelai(ICommand cmd, float delaiEnSecondes) {
 		delaiEnSecondes = delaiEnSecondes * 1000;
 		horloge_.activerApresDelai(cmd, delaiEnSecondes);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void desactiver(ICommand cmd) {
 		horloge_.desactiver(cmd);

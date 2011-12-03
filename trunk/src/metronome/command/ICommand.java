@@ -11,7 +11,7 @@ package metronome.command;
 public interface ICommand {
 
 	/**
-	 * Execute la commande.
+	 * Exécute la commande.
 	 * @since 1.0
 	 */
 	public void execute();

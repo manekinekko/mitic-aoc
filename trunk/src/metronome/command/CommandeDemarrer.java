@@ -23,6 +23,9 @@ public class CommandeDemarrer implements ICommand {
 		controleur_ = controleur;
 	}
 	
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void execute() {
 		controleur_.demarrer();
