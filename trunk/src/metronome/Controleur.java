@@ -3,7 +3,6 @@ package metronome;
 import metronome.adapter.Adapter;
 import metronome.adapter.Materiel;
 import metronome.command.MetronomeCommandeFactory;
-import metronome.core.HorlogeWrapper;
 import metronome.core.IHorloge;
 import metronome.core.IMoteurMetronome;
 import metronome.core.MoteurMetronome;
