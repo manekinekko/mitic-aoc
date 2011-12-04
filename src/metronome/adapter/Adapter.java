@@ -31,7 +31,7 @@ public class Adapter {
 	public Adapter(Controleur controleur) {
 		horloge_ = new HorlogeWrapper();
 		horloge_.activerPeriodiquement(MetronomeCommandeFactory.creerCommandeLireClavier(controleur), 0.2F);
-		(new HorlogeWrapper()).activerPeriodiquement(MetronomeCommandeFactory.creerCommandeSlider(controleur), 0.8F);
+		horloge_.activerPeriodiquement(MetronomeCommandeFactory.creerCommandeSlider(controleur), 0.8F);
 	}
 
 }

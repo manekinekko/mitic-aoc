@@ -43,13 +43,12 @@ public class IHM extends JFrame implements IIHM {
 	private LED led1_, led2_;
 	private JButton demarrer_, stop_, inc_, dec_;
 	private JSlider slider_;
-	private IControleur controleur_;
 	private EmetteurSonore emetteur_;
 	private Clavier clavier;
 	private Molette molette_;
 
 	/**
-	 * Le constructeur de la classe IHM peremet d'initialiser la construction de
+	 * Le constructeur de la classe IHM permet d'initialiser la construction de
 	 * l'IHM.
 	 * 
 	 * @param controleur Le contrôleur associé à cette vue.
@@ -58,7 +57,6 @@ public class IHM extends JFrame implements IIHM {
 	public IHM(IControleur controleur) {
 		super("Metronome");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		controleur_ = controleur;
 		emetteur_ = new EmetteurSonore();
 		construireIHM_();
 
