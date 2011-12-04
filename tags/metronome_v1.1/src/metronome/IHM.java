@@ -43,7 +43,7 @@ public class IHM extends JFrame implements IIHM {
 	private EmetteurSonore emetteur_;
 
 	/**
-	 * Le constructeur de la classe IHM peremet d'initialiser la construction de
+	 * Le constructeur de la classe IHM permet d'initialiser la construction de
 	 * l'IHM.
 	 * 
 	 * @param controleur le contrôleur associé à cette vue.
