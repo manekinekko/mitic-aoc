@@ -7,7 +7,12 @@ import metronome.command.ICommand;
  * convertir les valeurs passées en paramètre en un format plus approprié à
  * java. Elle apelle ensuite la méthode équivalent de TimerSwing.
  * 
- * @author <ul><li>Wassim Chegham (<a href=mailto:contact@cheghamwassim.com>contact@cheghamwassim.com</a>)</li><li>Gurval Le Bouter (<a href=mailto:gurval.lebouter@gmail.com>gurval.lebouter@gmail.com</a>)</li></ul>
+ * @author <ul>
+ *         <li>Wassim Chegham (<a
+ *         href=mailto:contact@cheghamwassim.com>contact@cheghamwassim.com</a>)</li>
+ *         <li>Gurval Le Bouter (<a
+ *         href=mailto:gurval.lebouter@gmail.com>gurval.lebouter@gmail.com</a>)</li>
+ *         </ul>
  * @version 1.0
  * @see IHorloge
  */
@@ -17,6 +22,7 @@ public class HorlogeWrapper implements IHorloge {
 
 	/**
 	 * Constructeur de HorlogeWrapper. Initialise le TimerSwing.
+	 * 
 	 * @since 1.0
 	 */
 	public HorlogeWrapper() {

@@ -69,12 +69,5 @@ public class MoteurMetronomeTest {
 	public void testTraiterCommandeTic() {
 	}
 
-	@Test
-	public void testAttach() {
-	}
-
-	@Test
-	public void testDetach() {
-	}
 
 }

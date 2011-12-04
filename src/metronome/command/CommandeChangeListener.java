@@ -7,7 +7,12 @@ import javax.swing.event.ChangeListener;
 /**
  * Exécute une commande au changement de valeur d'un JSlider.
  * 
- * @author <ul><li>Wassim Chegham (<a href=mailto:contact@cheghamwassim.com>contact@cheghamwassim.com</a>)</li><li>Gurval Le Bouter (<a href=mailto:gurval.lebouter@gmail.com>gurval.lebouter@gmail.com</a>)</li></ul>
+ * @author <ul>
+ *         <li>Wassim Chegham (<a
+ *         href=mailto:contact@cheghamwassim.com>contact@cheghamwassim.com</a>)</li>
+ *         <li>Gurval Le Bouter (<a
+ *         href=mailto:gurval.lebouter@gmail.com>gurval.lebouter@gmail.com</a>)</li>
+ *         </ul>
  * @version 1.0
  * @see ICommand
  */
@@ -17,22 +22,23 @@ public class CommandeChangeListener implements ChangeListener {
 
 	/**
 	 * Constructeur de la commande.
+	 * 
 	 * @param commande la commande à executer.
 	 * @since 1.0
 	 */
-	public CommandeChangeListener(ICommand commande){
+	public CommandeChangeListener(ICommand commande) {
 		commande_ = commande;
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 */
 	@Override
 	public void stateChanged(ChangeEvent event) {
-		JSlider source = (JSlider)event.getSource();
-        if (!source.getValueIsAdjusting()) {
-            commande_.execute();
-        }
+		JSlider source = (JSlider) event.getSource();
+		if (!source.getValueIsAdjusting()) {
+			commande_.execute();
+		}
 	}
 
 }

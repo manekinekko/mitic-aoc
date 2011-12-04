@@ -11,7 +11,12 @@ import metronome.command.MetronomeCommandeFactory;
  * métronome, comme son état, le tempo, le nombre de temps par mesure...<br/>
  * <b>En d'autres termes cette classe représente le Model du pattern MVC.</b>
  * 
- * @author <ul><li>Wassim Chegham (<a href=mailto:contact@cheghamwassim.com>contact@cheghamwassim.com</a>)</li><li>Gurval Le Bouter (<a href=mailto:gurval.lebouter@gmail.com>gurval.lebouter@gmail.com</a>)</li></ul>
+ * @author <ul>
+ *         <li>Wassim Chegham (<a
+ *         href=mailto:contact@cheghamwassim.com>contact@cheghamwassim.com</a>)</li>
+ *         <li>Gurval Le Bouter (<a
+ *         href=mailto:gurval.lebouter@gmail.com>gurval.lebouter@gmail.com</a>)</li>
+ *         </ul>
  * @version 1.0
  * @see IMoteurMetronome
  */
@@ -45,10 +50,8 @@ public class MoteurMetronome implements IMoteurMetronome, Constantes {
 		tempo_ = 0;
 		mesureActuelle_ = 0;
 
-		commandeMarqueurTemps_ = MetronomeCommandeFactory
-				.creerCommandeMarqueurTemps(controleur_);
-		commandeMarqueurMesure_ = MetronomeCommandeFactory
-				.creerCommandeMarqueurMesure(controleur_);
+		commandeMarqueurTemps_ = MetronomeCommandeFactory.creerCommandeMarqueurTemps(controleur_);
+		commandeMarqueurMesure_ = MetronomeCommandeFactory.creerCommandeMarqueurMesure(controleur_);
 		commandeTic_ = MetronomeCommandeFactory.creerCommandeTic(controleur_);
 	}
 
@@ -99,6 +102,7 @@ public class MoteurMetronome implements IMoteurMetronome, Constantes {
 
 	/**
 	 * Désactive toutes les commandes activées périodiquement de l'horloge.
+	 * 
 	 * @since 1.0
 	 */
 	private void desactiverLesCommandes_() {
@@ -106,14 +110,15 @@ public class MoteurMetronome implements IMoteurMetronome, Constantes {
 	}
 
 	/**
-	 * Active périodiquement la commande tic (qui appelle la méthode traiterCommandeTic).
+	 * Active périodiquement la commande tic (qui appelle la méthode
+	 * traiterCommandeTic).
+	 * 
 	 * @since 1.0
 	 */
 	private void activerLesCommandes_() {
 
 		if (etatMarche_ && tempo_ > 0) {
-			horloge_.activerPeriodiquement(commandeTic_,
-					(float) (60.0 / tempo_));
+			horloge_.activerPeriodiquement(commandeTic_, (float) (60.0 / tempo_));
 		}
 	}
 

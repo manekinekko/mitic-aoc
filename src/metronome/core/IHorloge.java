@@ -5,7 +5,12 @@ import metronome.command.ICommand;
 /**
  * Cette interface définit les méthodes à implémenter par la classe IHM.
  * 
- * @author <ul><li>Wassim Chegham (<a href=mailto:contact@cheghamwassim.com>contact@cheghamwassim.com</a>)</li><li>Gurval Le Bouter (<a href=mailto:gurval.lebouter@gmail.com>gurval.lebouter@gmail.com</a>)</li></ul>
+ * @author <ul>
+ *         <li>Wassim Chegham (<a
+ *         href=mailto:contact@cheghamwassim.com>contact@cheghamwassim.com</a>)</li>
+ *         <li>Gurval Le Bouter (<a
+ *         href=mailto:gurval.lebouter@gmail.com>gurval.lebouter@gmail.com</a>)</li>
+ *         </ul>
  * @version 1.0
  * 
  */
@@ -16,7 +21,8 @@ public interface IHorloge {
 	 * périodeEnSecondes secondes, avec une précision d'une milliseconde.
 	 * 
 	 * @param cmd la commande a exécuter périodiquement.
-	 * @param periodeEnSeconde la période d'éxécution de la commande.
+	 * @param periodeEnSeconde
+	 *            la période d'éxécution de la commande.
 	 * @since 1.0
 	 */
 	public void activerPeriodiquement(ICommand cmd, float periodeEnSeconde);
@@ -33,6 +39,7 @@ public interface IHorloge {
 
 	/**
 	 * Désactive la commande activé précédemment par activerPeriodiquement.
+	 * 
 	 * @param cmd la commande à désactiver.
 	 * @since 1.0
 	 */

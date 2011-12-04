@@ -5,7 +5,12 @@ import metronome.IControleur;
 /**
  * Commande exécutée pour stopper le moteur.
  * 
- * @author <ul><li>Wassim Chegham (<a href=mailto:contact@cheghamwassim.com>contact@cheghamwassim.com</a>)</li><li>Gurval Le Bouter (<a href=mailto:gurval.lebouter@gmail.com>gurval.lebouter@gmail.com</a>)</li></ul>
+ * @author <ul>
+ *         <li>Wassim Chegham (<a
+ *         href=mailto:contact@cheghamwassim.com>contact@cheghamwassim.com</a>)</li>
+ *         <li>Gurval Le Bouter (<a
+ *         href=mailto:gurval.lebouter@gmail.com>gurval.lebouter@gmail.com</a>)</li>
+ *         </ul>
  * @version 1.0
  * @see ICommand
  */
@@ -15,11 +20,12 @@ public class CommandeStop implements ICommand {
 
 	/**
 	 * Constructeur de la commande.
+	 * 
 	 * @param controleur le contrôleur de l'application.
 	 * @since 1.0
 	 */
 	public CommandeStop(IControleur controleur) {
-		controleur_ =  controleur;
+		controleur_ = controleur;
 	}
 
 	/**
