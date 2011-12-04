@@ -1,7 +1,7 @@
 package metronome.adapter;
 
 /**
- * Implémentation de l'interface IClavier. Cette classe doit être créée à partir de Materiel.
+ * ImplÃ©mentation de l'interface IClavier. Cette classe doit Ãªtre crÃ©Ã©e Ã  partir de Materiel.
  * 
  * @author <ul>
  *         <li>Wassim Chegham (<a
@@ -46,8 +46,8 @@ public class Clavier implements IClavier {
 	}
 
 	/**
-	 * Appui sur la touche i (voir la méthode touchePresse pour les correspondance des touches). 
-	 * @param i le numero de la touche pressée
+	 * Appui sur la touche i (voir la mÃ©thode touchePresse pour les correspondances des touches). 
+	 * @param i le numÃ©ro de la touche pressÃ©e
 	 * @since 2.0
 	 */
 	public void setTouchePresse(int i) {

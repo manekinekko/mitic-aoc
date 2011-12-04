@@ -68,7 +68,6 @@ public class Materiel {
 		return molette_;
 	}
 
-
 	/**
 	 * Créer un émetteur sonore.
 	 * 
