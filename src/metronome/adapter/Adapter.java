@@ -7,7 +7,7 @@ import metronome.core.IHorloge;
 
 /**
  * Classe servant d'adaptateur (voir pattern adapter). Elle permet d'aller lire
- * les états des boutons et de la molette. En fonction de ceux-ci, elle execute
+ * les états des boutons et de la molette. En fonction de ceux-ci, elle exécute
  * les commandes appropriées.
  * 
  * @author <ul>
