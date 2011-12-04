@@ -156,6 +156,10 @@ public class IHM extends JFrame implements IIHM {
 						+ hBox2.getPreferredSize().height + 10));
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
 	public JTextField getLCD() {
 		return lcd_;
 	}

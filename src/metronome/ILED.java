@@ -22,6 +22,7 @@ public interface ILED {
 	/**
 	 * Récupère l'etat lumineux de la LED
 	 * @return True si la LED est allumee, False sinon.
+	 * @since 1.0
 	 */
 	public boolean estAllumee();
 }

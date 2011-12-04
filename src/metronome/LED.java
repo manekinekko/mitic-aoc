@@ -17,6 +17,7 @@ public class LED extends JRadioButton implements ILED {
 
 	/**
 	 * Constructeur de la LED.
+	 * @since 1.0
 	 */
 	public LED() {
 		setSelected(false);
