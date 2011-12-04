@@ -4,6 +4,7 @@ import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 import javax.swing.Box;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -11,10 +12,12 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSlider;
 import javax.swing.JTextField;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
+
 import metronome.adapter.Clavier;
 import metronome.adapter.Materiel;
-import metronome.command.CommandeChangeListener;
-import metronome.command.MetronomeCommandeFactory;
+import metronome.adapter.Molette;
 import metronome.core.EmetteurSonore;
 
 /**
@@ -38,6 +41,7 @@ public class IHM extends JFrame implements IIHM {
 	private IControleur controleur_;
 	private EmetteurSonore emetteur_;
 	private Clavier clavier;
+	private Molette molette_;
 
 	/**
 	 * Le constructeur de la classe IHM peremet d'initialiser la construction
@@ -53,6 +57,7 @@ public class IHM extends JFrame implements IIHM {
 		construireIHM_();
 		
 		clavier = (Clavier) Materiel.getClavier();
+		molette_ = (Molette) Materiel.getMolette();
 	}
 
 	/**
@@ -67,9 +72,15 @@ public class IHM extends JFrame implements IIHM {
 
 		slider_ = new JSlider(Constantes.SLIDER_MIN, Constantes.SLIDER_MAX,
 				Constantes.SLIDER_DEFAULT);
-
-		slider_.addChangeListener(new CommandeChangeListener(
-				MetronomeCommandeFactory.creerCommandeSlider(controleur_)));
+		slider_.setPaintTicks(true);
+	    slider_.setMajorTickSpacing(50);
+	    slider_.setMinorTickSpacing(10);
+		slider_.addChangeListener(new ChangeListener() {
+			@Override
+			public void stateChanged(ChangeEvent e) {
+				molette_.setCurrentPosition((float)( (JSlider) e.getSource()).getValue());
+			}
+		});
 
 		lcd_ = new LCD();
 

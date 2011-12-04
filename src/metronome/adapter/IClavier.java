@@ -12,12 +12,11 @@ package metronome.adapter;
  * @version 2.0
  */
 public interface IClavier {
-
 	/**
-	 * Retourne true si le bouton i est enfoncÃ©, et false sinon.
+	 * Retourne true si le bouton i est enfoncé, et false sinon.
 	 * 
 	 * @param i 1 pour le bouton start, 2 pour stop, 3 pour inc et 4 pour dec.
-	 * @return l'Ã©tat du bouton
+	 * @return l'état du bouton
 	 * @since 2.0
 	 */
 	public boolean touchePresse(int i);

@@ -21,7 +21,7 @@ public class Materiel {
 
 	private static IHorloge horloge_;
 	private static IClavier clavier_;
-	// private static IMolette molette_;
+	private static IMolette molette_;
 	private static IEmetteurSonore emetteurSonore_;
 
 	// private static IAfficheur afficheur_;
@@ -61,12 +61,13 @@ public class Materiel {
 		return clavier_;
 	}
 
-	/*
-	 * public static IMolette getMolette(){ if ( molette_ == null ){ molette_ =
-	 * new Molette(); }
-	 * 
-	 * return molette_; }
-	 */
+	public static IMolette getMolette() {
+		if (molette_ == null) {
+			molette_ = new Molette();
+		}
+		return molette_;
+	}
+
 
 	/**
 	 * Créer un émetteur sonore.

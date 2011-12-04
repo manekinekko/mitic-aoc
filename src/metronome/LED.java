@@ -1,5 +1,7 @@
 package metronome;
 
+import java.awt.Color;
+
 import javax.swing.JRadioButton;
 
 /**
