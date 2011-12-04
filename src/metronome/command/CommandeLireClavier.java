@@ -16,9 +16,18 @@ public class CommandeLireClavier implements ICommand {
 
 	@Override
 	public void execute() {
-
+		
+		if (clavier_.touchePresse(1)){
+			controleur_.demarrer();
+		}
+		if (clavier_.touchePresse(2)){
+			controleur_.stopper();
+		}
 		if (clavier_.touchePresse(3)){
 			controleur_.incrementer();
+		}
+		if (clavier_.touchePresse(4)){
+			controleur_.decrementer();
 		}
 		
 	}

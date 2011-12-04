@@ -5,7 +5,7 @@ public class Clavier implements IClavier{
 	private boolean[] touchePresse_;
 	
 	public Clavier() {
-		touchePresse_ = new boolean[4];
+		touchePresse_ = new boolean[5];
 	}
 	
 	@Override
@@ -20,7 +20,6 @@ public class Clavier implements IClavier{
 	
 	public void setTouchePresse(int touchePresse){
 		touchePresse_[touchePresse] = true;
-		System.out.println("Clavier.setTouchePresse()");
 	}
 
 }
