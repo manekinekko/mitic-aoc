@@ -110,9 +110,12 @@ public class Controleur implements IControleur, Constantes {
 	 */
 	@Override
 	public void updateSlider() {
+		int ancienneValeur = moteur_.getTempo();
 		int valeur = ihm_.getValeurSlider();
 		valeur = convertirTempo_(valeur);
-		moteur_.setTempo(valeur);
+		if ( ancienneValeur != valeur ) {
+			moteur_.setTempo(valeur);			
+		}
 	}
 
 	/**

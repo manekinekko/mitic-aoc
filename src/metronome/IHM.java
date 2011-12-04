@@ -78,7 +78,8 @@ public class IHM extends JFrame implements IIHM {
 		slider_.addChangeListener(new ChangeListener() {
 			@Override
 			public void stateChanged(ChangeEvent e) {
-				molette_.setCurrentPosition((float)( (JSlider) e.getSource()).getValue());
+				float currentValue = (float)( (JSlider) e.getSource()).getValue();
+				molette_.setCurrentPosition(currentValue);
 			}
 		});
 
