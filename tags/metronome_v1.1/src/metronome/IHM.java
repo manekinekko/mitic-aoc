@@ -17,12 +17,17 @@ import metronome.command.MetronomeCommandeFactory;
 import metronome.core.EmetteurSonore;
 
 /**
- * Cette classe définit la représentation graphique du programme.
- * Elle permet d'accueillir tout les autres composants graphiques tels
- * les boutons, slider et LED.<br/> 
- * <b>En d'autres termes cette classe représente la Vue du pattern MVC.</b> 
+ * Cette classe définit la représentation graphique du programme. Elle permet
+ * d'accueillir tout les autres composants graphiques tels les boutons, slider
+ * et LED.<br/>
+ * <b>En d'autres termes cette classe représente la Vue du pattern MVC.</b>
  * 
- * @author <ul><li>Wassim Chegham (<a href=mailto:contact@cheghamwassim.com>contact@cheghamwassim.com</a>)</li><li>Gurval Le Bouter (<a href=mailto:gurval.lebouter@gmail.com>gurval.lebouter@gmail.com</a>)</li></ul>
+ * @author <ul>
+ *         <li>Wassim Chegham (<a
+ *         href=mailto:contact@cheghamwassim.com>contact@cheghamwassim.com</a>)</li>
+ *         <li>Gurval Le Bouter (<a
+ *         href=mailto:gurval.lebouter@gmail.com>gurval.lebouter@gmail.com</a>)</li>
+ *         </ul>
  * @version 1.0
  * @see IIHM
  */
@@ -38,9 +43,10 @@ public class IHM extends JFrame implements IIHM {
 	private EmetteurSonore emetteur_;
 
 	/**
-	 * Le constructeur de la classe IHM peremet d'initialiser la construction
-	 * de l'IHM.
-	 * @param controleur Le contrôleur associé à cette vue.
+	 * Le constructeur de la classe IHM peremet d'initialiser la construction de
+	 * l'IHM.
+	 * 
+	 * @param controleur le contrôleur associé à cette vue.
 	 * @since 1.0
 	 */
 	public IHM(IControleur controleur) {
@@ -53,6 +59,7 @@ public class IHM extends JFrame implements IIHM {
 
 	/**
 	 * Cette méthode contruit l'IHM.
+	 * 
 	 * @since 1.0
 	 */
 	private void construireIHM_() {
@@ -64,8 +71,8 @@ public class IHM extends JFrame implements IIHM {
 		slider_ = new JSlider(Constantes.SLIDER_MIN, Constantes.SLIDER_MAX,
 				Constantes.SLIDER_DEFAULT);
 
-		slider_.addChangeListener(new CommandeChangeListener(
-				MetronomeCommandeFactory.creerCommandeSlider(controleur_)));
+		slider_.addChangeListener(new CommandeChangeListener(MetronomeCommandeFactory
+				.creerCommandeSlider(controleur_)));
 
 		lcd_ = new LCD();
 
@@ -98,10 +105,10 @@ public class IHM extends JFrame implements IIHM {
 
 		});
 
-		demarrer_.addMouseListener(new CommandeMouseListener(
-				MetronomeCommandeFactory.creerCommandeDemarrer(controleur_)));
-		stop_.addMouseListener(new CommandeMouseListener(
-				MetronomeCommandeFactory.creerCommandeStop(controleur_)));
+		demarrer_.addMouseListener(new CommandeMouseListener(MetronomeCommandeFactory
+				.creerCommandeDemarrer(controleur_)));
+		stop_.addMouseListener(new CommandeMouseListener(MetronomeCommandeFactory
+				.creerCommandeStop(controleur_)));
 
 		stop_.setEnabled(false);
 		inc_.setEnabled(false);
@@ -141,14 +148,17 @@ public class IHM extends JFrame implements IIHM {
 		pack();
 		setVisible(true);
 		setMinimumSize(new Dimension(hBox2.getPreferredSize().width + 10,
-				hBox1.getPreferredSize().height
-						+ hBox2.getPreferredSize().height + 10));
+				hBox1.getPreferredSize().height + hBox2.getPreferredSize().height + 10));
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
 	public JTextField getLCD() {
 		return lcd_;
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 */
@@ -204,7 +214,7 @@ public class IHM extends JFrame implements IIHM {
 	public void setEtatBouton(JButton bouton, boolean etat) {
 		bouton.setEnabled(etat);
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 */
@@ -237,9 +247,11 @@ public class IHM extends JFrame implements IIHM {
 	 */
 	@Override
 	public LED getLED(int num) {
-		switch(num){
-			case 1: return led1_;
-			case 2: return led2_;
+		switch (num) {
+		case 1:
+			return led1_;
+		case 2:
+			return led2_;
 		}
 		return null;
 	}

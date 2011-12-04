@@ -12,7 +12,12 @@ import javax.sound.sampled.DataLine.Info;
  * IEmetteurSonore pour sa méthode "emettreClick", utilisé pour jouer le tic du
  * métronome.
  * 
- * @author <ul><li>Wassim Chegham (<a href=mailto:contact@cheghamwassim.com>contact@cheghamwassim.com</a>)</li><li>Gurval Le Bouter (<a href=mailto:gurval.lebouter@gmail.com>gurval.lebouter@gmail.com</a>)</li></ul>
+ * @author <ul>
+ *         <li>Wassim Chegham (<a
+ *         href=mailto:contact@cheghamwassim.com>contact@cheghamwassim.com</a>)</li>
+ *         <li>Gurval Le Bouter (<a
+ *         href=mailto:gurval.lebouter@gmail.com>gurval.lebouter@gmail.com</a>)</li>
+ *         </ul>
  * @version 1.0
  * @see IEmetteurSonore
  */
@@ -26,7 +31,7 @@ public class EmetteurSonore implements IEmetteurSonore {
 
 	/**
 	 * Constructeur d'EmetteurSonore. Permet d'initialiser les différent objet
-	 * necessaire à la lecture du fichier wav.
+	 * nécessaire à la lecture du fichier wav.
 	 * 
 	 * @since 1.0
 	 */
@@ -47,7 +52,14 @@ public class EmetteurSonore implements IEmetteurSonore {
 	 * méthode start permet de lire un fichier audio. Un thread est utilisé afin
 	 * de ne pas bloquer l'application durant la lecture du fichier.
 	 * 
-	 * @author <ul><li>Wassim Chegham (<a href=mailto:contact@cheghamwassim.com>contact@cheghamwassim.com</a>)</li><li>Gurval Le Bouter (<a href=mailto:gurval.lebouter@gmail.com>gurval.lebouter@gmail.com</a>)</li></ul>
+	 * @author <ul>
+	 *         <li>Wassim Chegham (<a
+	 *         href=mailto:contact@cheghamwassim.com>contact
+	 *         @cheghamwassim.com</a>)</li>
+	 *         <li>Gurval Le Bouter (<a
+	 *         href=mailto:gurval.lebouter@gmail.com>gurval
+	 *         .lebouter@gmail.com</a>)</li>
+	 *         </ul>
 	 * @version 1.0
 	 * @since 1.0
 	 */

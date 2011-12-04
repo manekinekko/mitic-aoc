@@ -11,7 +11,12 @@ import metronome.command.ICommand;
  * est utilisée par HorlogeWrapper, qui sert de façade.
  * 
  * 
- * @author <ul><li>Wassim Chegham (<a href=mailto:contact@cheghamwassim.com>contact@cheghamwassim.com</a>)</li><li>Gurval Le Bouter (<a href=mailto:gurval.lebouter@gmail.com>gurval.lebouter@gmail.com</a>)</li></ul>
+ * @author <ul>
+ *         <li>Wassim Chegham (<a
+ *         href=mailto:contact@cheghamwassim.com>contact@cheghamwassim.com</a>)</li>
+ *         <li>Gurval Le Bouter (<a
+ *         href=mailto:gurval.lebouter@gmail.com>gurval.lebouter@gmail.com</a>)</li>
+ *         </ul>
  * @version 1.0
  * @see IHorloge
  */
@@ -22,6 +27,7 @@ public class TimerSwing implements IHorloge {
 
 	/**
 	 * Constructeur de TimerSwing. Initialise les timers.
+	 * 
 	 * @since 1.0
 	 */
 	public TimerSwing() {
@@ -34,8 +40,7 @@ public class TimerSwing implements IHorloge {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public void activerPeriodiquement(final ICommand cmd,
-			final float periodeEnMilliSeconde) {
+	public void activerPeriodiquement(final ICommand cmd, final float periodeEnMilliSeconde) {
 
 		timerPeriodique_.addActionListener(new ActionListener() {
 			@Override
@@ -53,8 +58,7 @@ public class TimerSwing implements IHorloge {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public void activerApresDelai(final ICommand cmd,
-			final float delaiEnMilliSecondes) {
+	public void activerApresDelai(final ICommand cmd, final float delaiEnMilliSecondes) {
 		timerDelai_ = new Timer(0, new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
