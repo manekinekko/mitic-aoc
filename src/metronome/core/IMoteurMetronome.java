@@ -4,7 +4,12 @@ package metronome.core;
  * Cette interface définit les méthodes à implémenter par la classe
  * MoteurMetronome.
  * 
- * @author <ul><li>Wassim Chegham (<a href=mailto:contact@cheghamwassim.com>contact@cheghamwassim.com</a>)</li><li>Gurval Le Bouter (<a href=mailto:gurval.lebouter@gmail.com>gurval.lebouter@gmail.com</a>)</li></ul>
+ * @author <ul>
+ *         <li>Wassim Chegham (<a
+ *         href=mailto:contact@cheghamwassim.com>contact@cheghamwassim.com</a>)</li>
+ *         <li>Gurval Le Bouter (<a
+ *         href=mailto:gurval.lebouter@gmail.com>gurval.lebouter@gmail.com</a>)</li>
+ *         </ul>
  * @version 1.0
  */
 public interface IMoteurMetronome {
@@ -58,8 +63,8 @@ public interface IMoteurMetronome {
 	public void setTempsParMesure(int tempsParMesure);
 
 	/**
-	 * Méthode executée périodiquement via la commande "CommandeTic". Elle
-	 * execute les commandes "CommandeMarquerTemps" et "CommandeMarqueurMesure".
+	 * Méthode exécutée périodiquement via la commande "CommandeTic". Elle
+	 * exécute les commandes "CommandeMarquerTemps" et "CommandeMarqueurMesure".
 	 * 
 	 * @since 1.0
 	 */

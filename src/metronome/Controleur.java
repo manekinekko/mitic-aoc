@@ -11,7 +11,12 @@ import metronome.core.MoteurMetronome;
  * Cette classe fait office de contrôleur dans ls pattern MVC. Elle permet à
  * l'IHM d'interagir sur le moteur et vice versa.
  * 
- * @author <ul><li>Wassim Chegham (<a href=mailto:contact@cheghamwassim.com>contact@cheghamwassim.com</a>)</li><li>Gurval Le Bouter (<a href=mailto:gurval.lebouter@gmail.com>gurval.lebouter@gmail.com</a>)</li></ul>
+ * @author <ul>
+ *         <li>Wassim Chegham (<a
+ *         href=mailto:contact@cheghamwassim.com>contact@cheghamwassim.com</a>)</li>
+ *         <li>Gurval Le Bouter (<a
+ *         href=mailto:gurval.lebouter@gmail.com>gurval.lebouter@gmail.com</a>)</li>
+ *         </ul>
  * @version 1.0
  * @see IControleur
  */
@@ -24,6 +29,7 @@ public class Controleur implements IControleur, Constantes {
 
 	/**
 	 * Constructeur du controleur
+	 * 
 	 * @since 1.0
 	 */
 	public Controleur() {
@@ -74,7 +80,7 @@ public class Controleur implements IControleur, Constantes {
 	@Override
 	public void incrementer() {
 		moteur_.setTempsParMesure(moteur_.getTempsParMesure() + 1);
-		System.out.println("Controleur.incrementer(), temps:"+moteur_.getTempsParMesure());
+		System.out.println("Controleur.incrementer(), temps:" + moteur_.getTempsParMesure());
 		changeEtatBouttonsIncDec();
 	}
 
@@ -90,6 +96,7 @@ public class Controleur implements IControleur, Constantes {
 	/**
 	 * Active ou désactive les boutons INC/DEC de l'IHM en fonction du nombre de
 	 * temps par mesure.
+	 * 
 	 * @since 1.0
 	 */
 	private void changeEtatBouttonsIncDec() {
@@ -113,8 +120,8 @@ public class Controleur implements IControleur, Constantes {
 		int ancienneValeur = moteur_.getTempo();
 		int valeur = ihm_.getValeurSlider();
 		valeur = convertirTempo_(valeur);
-		if ( ancienneValeur != valeur ) {
-			moteur_.setTempo(valeur);			
+		if (ancienneValeur != valeur) {
+			moteur_.setTempo(valeur);
 		}
 	}
 
@@ -138,6 +145,7 @@ public class Controleur implements IControleur, Constantes {
 
 	/**
 	 * Convertit la la valeur rendu par le slider vers le tempo correspondant
+	 * 
 	 * @param valeur la valeur du slider
 	 * @return le tempo
 	 */
@@ -149,7 +157,7 @@ public class Controleur implements IControleur, Constantes {
 		} else {
 			valeur = (int) MIN_TEMPO + valeur * (MAX_TEMPO - MIN_TEMPO) / 1000;
 		}
-		
+
 		return valeur;
 	}
 

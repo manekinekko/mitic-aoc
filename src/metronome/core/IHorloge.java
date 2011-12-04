@@ -5,7 +5,12 @@ import metronome.command.ICommand;
 /**
  * Cette interface définit les méthodes à implémenter par la classe IHM.
  * 
- * @author <ul><li>Wassim Chegham (<a href=mailto:contact@cheghamwassim.com>contact@cheghamwassim.com</a>)</li><li>Gurval Le Bouter (<a href=mailto:gurval.lebouter@gmail.com>gurval.lebouter@gmail.com</a>)</li></ul>
+ * @author <ul>
+ *         <li>Wassim Chegham (<a
+ *         href=mailto:contact@cheghamwassim.com>contact@cheghamwassim.com</a>)</li>
+ *         <li>Gurval Le Bouter (<a
+ *         href=mailto:gurval.lebouter@gmail.com>gurval.lebouter@gmail.com</a>)</li>
+ *         </ul>
  * @version 1.0
  * 
  */
@@ -33,6 +38,7 @@ public interface IHorloge {
 
 	/**
 	 * Désactive la commande activé précédemment par activerPeriodiquement.
+	 * 
 	 * @param cmd la commande à désactiver.
 	 * @since 1.0
 	 */

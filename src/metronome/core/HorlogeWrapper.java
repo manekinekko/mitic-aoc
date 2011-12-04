@@ -3,9 +3,15 @@ package metronome.core;
 import metronome.command.ICommand;
 
 /**
- * Cette classe sert d'adaptateur pour l'horloge utilisée dans {@link MoteurMetronome}. 
+ * Cette classe sert d'adaptateur pour l'horloge utilisée dans
+ * {@link MoteurMetronome}.
  * 
- * @author <ul><li>Wassim Chegham (<a href=mailto:contact@cheghamwassim.com>contact@cheghamwassim.com</a>)</li><li>Gurval Le Bouter (<a href=mailto:gurval.lebouter@gmail.com>gurval.lebouter@gmail.com</a>)</li></ul>
+ * @author <ul>
+ *         <li>Wassim Chegham (<a
+ *         href=mailto:contact@cheghamwassim.com>contact@cheghamwassim.com</a>)</li>
+ *         <li>Gurval Le Bouter (<a
+ *         href=mailto:gurval.lebouter@gmail.com>gurval.lebouter@gmail.com</a>)</li>
+ *         </ul>
  * @version 1.0
  * @see IHorloge
  * @role Horloge Adapter
@@ -16,6 +22,7 @@ public class HorlogeWrapper implements IHorloge {
 
 	/**
 	 * Constructeur de HorlogeWrapper. Initialise le TimerSwing.
+	 * 
 	 * @since 1.0
 	 */
 	public HorlogeWrapper() {

@@ -21,12 +21,17 @@ import metronome.adapter.Molette;
 import metronome.core.EmetteurSonore;
 
 /**
- * Cette classe définit la représentation graphique du programme.
- * Elle permet d'accueillir tout les autres composants graphiques tels
- * les boutons, slider et LED.<br/> 
- * <b>En d'autres termes cette classe représente la Vue du pattern MVC.</b> 
+ * Cette classe définit la représentation graphique du programme. Elle permet
+ * d'accueillir tout les autres composants graphiques tels les boutons, slider
+ * et LED.<br/>
+ * <b>En d'autres termes cette classe représente la Vue du pattern MVC.</b>
  * 
- * @author <ul><li>Wassim Chegham (<a href=mailto:contact@cheghamwassim.com>contact@cheghamwassim.com</a>)</li><li>Gurval Le Bouter (<a href=mailto:gurval.lebouter@gmail.com>gurval.lebouter@gmail.com</a>)</li></ul>
+ * @author <ul>
+ *         <li>Wassim Chegham (<a
+ *         href=mailto:contact@cheghamwassim.com>contact@cheghamwassim.com</a>)</li>
+ *         <li>Gurval Le Bouter (<a
+ *         href=mailto:gurval.lebouter@gmail.com>gurval.lebouter@gmail.com</a>)</li>
+ *         </ul>
  * @version 1.0
  * @see IIHM
  */
@@ -44,8 +49,9 @@ public class IHM extends JFrame implements IIHM {
 	private Molette molette_;
 
 	/**
-	 * Le constructeur de la classe IHM peremet d'initialiser la construction
-	 * de l'IHM.
+	 * Le constructeur de la classe IHM peremet d'initialiser la construction de
+	 * l'IHM.
+	 * 
 	 * @param controleur Le contrôleur associé à cette vue.
 	 * @since 1.0
 	 */
@@ -55,13 +61,14 @@ public class IHM extends JFrame implements IIHM {
 		controleur_ = controleur;
 		emetteur_ = new EmetteurSonore();
 		construireIHM_();
-		
+
 		clavier = (Clavier) Materiel.getClavier();
 		molette_ = (Molette) Materiel.getMolette();
 	}
 
 	/**
 	 * Cette méthode contruit l'IHM.
+	 * 
 	 * @since 1.0
 	 */
 	private void construireIHM_() {
@@ -73,12 +80,12 @@ public class IHM extends JFrame implements IIHM {
 		slider_ = new JSlider(Constantes.SLIDER_MIN, Constantes.SLIDER_MAX,
 				Constantes.SLIDER_DEFAULT);
 		slider_.setPaintTicks(true);
-	    slider_.setMajorTickSpacing(50);
-	    slider_.setMinorTickSpacing(10);
+		slider_.setMajorTickSpacing(50);
+		slider_.setMinorTickSpacing(10);
 		slider_.addChangeListener(new ChangeListener() {
 			@Override
 			public void stateChanged(ChangeEvent e) {
-				float currentValue = (float)( (JSlider) e.getSource()).getValue();
+				float currentValue = (float) ((JSlider) e.getSource()).getValue();
 				molette_.setCurrentPosition(currentValue);
 			}
 		});
@@ -96,8 +103,8 @@ public class IHM extends JFrame implements IIHM {
 		demarrer_ = new JButton("START");
 		stop_ = new JButton("STOP");
 		inc_ = new JButton("INC");
-		
-		//TODO utiliser la factory pour créer cette commande?
+
+		// TODO utiliser la factory pour créer cette commande?
 		inc_.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -105,7 +112,7 @@ public class IHM extends JFrame implements IIHM {
 			}
 		});
 		dec_ = new JButton("DEC");
-		//TODO utiliser la factory pour créer cette commande?
+		// TODO utiliser la factory pour créer cette commande?
 		dec_.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -164,8 +171,7 @@ public class IHM extends JFrame implements IIHM {
 		pack();
 		setVisible(true);
 		setMinimumSize(new Dimension(hBox2.getPreferredSize().width + 10,
-				hBox1.getPreferredSize().height
-						+ hBox2.getPreferredSize().height + 10));
+				hBox1.getPreferredSize().height + hBox2.getPreferredSize().height + 10));
 	}
 
 	/**
@@ -175,7 +181,7 @@ public class IHM extends JFrame implements IIHM {
 	public JTextField getLCD() {
 		return lcd_;
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 */
@@ -231,7 +237,7 @@ public class IHM extends JFrame implements IIHM {
 	public void setEtatBouton(JButton bouton, boolean etat) {
 		bouton.setEnabled(etat);
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 */
@@ -264,9 +270,11 @@ public class IHM extends JFrame implements IIHM {
 	 */
 	@Override
 	public LED getLED(int num) {
-		switch(num){
-			case 1: return led1_;
-			case 2: return led2_;
+		switch (num) {
+		case 1:
+			return led1_;
+		case 2:
+			return led2_;
 		}
 		return null;
 	}

@@ -3,7 +3,7 @@ package metronome.command;
 import metronome.IControleur;
 
 /**
- * Cette classe est une factory de commande.
+ * Cette classe est une factory de commandes.
  * 
  * @author <ul>
  *         <li>Wassim Chegham (<a
@@ -70,7 +70,7 @@ public class MetronomeCommandeFactory {
 	public static ICommand creerCommandeEteindreLed(IControleur controleur, int led) {
 		return new CommandeEteindreLed(controleur, led);
 	}
-	
+
 	/**
 	 * Créer une commande CommandeLireClavier.
 	 * 
@@ -81,5 +81,5 @@ public class MetronomeCommandeFactory {
 	public static ICommand creerCommandeLireClavier(IControleur controleur) {
 		return new CommandeLireClavier(controleur);
 	}
-	
+
 }

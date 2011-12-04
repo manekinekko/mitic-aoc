@@ -16,6 +16,7 @@ import metronome.adapter.Materiel;
  *         href="mailto:gurval.lebouter@gmail.com">gurval
  *         .lebouter@gmail.com</a>)</li>
  *         </ul>
+ * 
  * @version 2.0
  * @see ICommand
  */
@@ -26,6 +27,7 @@ public class CommandeLireClavier implements ICommand {
 
 	/**
 	 * Constructeur de la commande.
+	 * 
 	 * @param controleur le contrôleur de l'application.
 	 * @since 2.0
 	 */
