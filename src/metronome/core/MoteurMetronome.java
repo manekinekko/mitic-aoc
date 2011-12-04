@@ -2,8 +2,10 @@ package metronome.core;
 
 import metronome.Constantes;
 import metronome.IControleur;
+import metronome.command.CommandeMarqueurMesure;
+import metronome.command.CommandeMarqueurTemps;
+import metronome.command.CommandeTic;
 import metronome.command.ICommand;
-import metronome.command.MetronomeCommandeFactory;
 
 /**
  * Cette classe est le coeur du programme. Elle permet de stocker et de
@@ -50,9 +52,9 @@ public class MoteurMetronome implements IMoteurMetronome, Constantes {
 		tempo_ = 0;
 		mesureActuelle_ = 0;
 
-		commandeMarqueurTemps_ = MetronomeCommandeFactory.creerCommandeMarqueurTemps(controleur_);
-		commandeMarqueurMesure_ = MetronomeCommandeFactory.creerCommandeMarqueurMesure(controleur_);
-		commandeTic_ = MetronomeCommandeFactory.creerCommandeTic(controleur_);
+		commandeMarqueurTemps_ = new CommandeMarqueurTemps(controleur_);
+		commandeMarqueurMesure_ = new CommandeMarqueurMesure(controleur_);
+		commandeTic_ = new CommandeTic(controleur_);
 	}
 
 	/**

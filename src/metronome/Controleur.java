@@ -2,7 +2,8 @@ package metronome;
 
 import metronome.adapter.Adapter;
 import metronome.adapter.Materiel;
-import metronome.command.MetronomeCommandeFactory;
+import metronome.command.CommandeEteindreLed;
+import metronome.command.CommandeSlider;
 import metronome.core.IHorloge;
 import metronome.core.IMoteurMetronome;
 import metronome.core.MoteurMetronome;
@@ -38,7 +39,7 @@ public class Controleur implements IControleur, Constantes {
 		ihm_ = new IHM(this);
 		changeEtatBouttonsIncDec();
 		// mise a jour de la valeur du tempo de l'IHM
-		MetronomeCommandeFactory.creerCommandeSlider(this).execute();
+		new CommandeSlider(this).execute();
 		adapter_ = new Adapter(this);
 	}
 
@@ -184,7 +185,7 @@ public class Controleur implements IControleur, Constantes {
 	public void marquerTemps() {
 
 		ihm_.allumerLED(1);
-		horloge_.activerApresDelai(MetronomeCommandeFactory.creerCommandeEteindreLed(this, 1),
+		horloge_.activerApresDelai(new CommandeEteindreLed(this, 1),
 				0.15F);
 		ihm_.emettreClick();
 	}
@@ -203,7 +204,7 @@ public class Controleur implements IControleur, Constantes {
 	@Override
 	public void marquerMesure() {
 		ihm_.allumerLED(2);
-		horloge_.activerApresDelai(MetronomeCommandeFactory.creerCommandeEteindreLed(this, 2),
+		horloge_.activerApresDelai(new CommandeEteindreLed(this, 2),
 				0.15F);
 	}
 

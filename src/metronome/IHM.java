@@ -102,7 +102,6 @@ public class IHM extends JFrame implements IIHM {
 		stop_ = new JButton("STOP");
 		inc_ = new JButton("INC");
 
-		// TODO utiliser la factory pour créer cette commande?
 		inc_.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -110,7 +109,7 @@ public class IHM extends JFrame implements IIHM {
 			}
 		});
 		dec_ = new JButton("DEC");
-		// TODO utiliser la factory pour créer cette commande?
+
 		dec_.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
