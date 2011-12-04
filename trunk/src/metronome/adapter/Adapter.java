@@ -1,7 +1,8 @@
 package metronome.adapter;
 
 import metronome.Controleur;
-import metronome.command.MetronomeCommandeFactory;
+import metronome.command.CommandeLireClavier;
+import metronome.command.CommandeSlider;
 import metronome.core.HorlogeWrapper;
 import metronome.core.IHorloge;
 
@@ -30,8 +31,8 @@ public class Adapter {
 	 */
 	public Adapter(Controleur controleur) {
 		horloge_ = new HorlogeWrapper();
-		horloge_.activerPeriodiquement(MetronomeCommandeFactory.creerCommandeLireClavier(controleur), 0.2F);
-		horloge_.activerPeriodiquement(MetronomeCommandeFactory.creerCommandeSlider(controleur), 0.8F);
+		horloge_.activerPeriodiquement(new CommandeLireClavier(controleur), 0.2F);
+		horloge_.activerPeriodiquement(new CommandeSlider(controleur), 0.8F);
 	}
 
 }
