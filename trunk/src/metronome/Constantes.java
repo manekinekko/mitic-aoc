@@ -40,4 +40,11 @@ public interface Constantes {
 	 * La valeur maximale du temps par mesure.
 	 */
 	public static final int MAX_TEMPS_PAR_MESURE = 7;
+	/*
+	 * Codes des touches du clavier
+	 */
+	public static final int TOUCHE_CLAVIER_START = 1;
+	public static final int TOUCHE_CLAVIER_STOP = 2;
+	public static final int TOUCHE_CLAVIER_INC = 3;
+	public static final int TOUCHE_CLAVIER_DEC = 4;
 }

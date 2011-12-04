@@ -1,5 +1,6 @@
 package metronome.command;
 
+import metronome.Constantes;
 import metronome.IControleur;
 import metronome.adapter.IClavier;
 import metronome.adapter.Materiel;
@@ -18,7 +19,7 @@ import metronome.adapter.Materiel;
  *         </ul>
  * 
  * @version 2.0
- * @see ICommand
+ * @see ICommand, Constantes
  */
 public class CommandeLireClavier implements ICommand {
 
@@ -42,16 +43,16 @@ public class CommandeLireClavier implements ICommand {
 	@Override
 	public void execute() {
 
-		if (clavier_.touchePresse(1)) {
+		if (clavier_.touchePresse(Constantes.TOUCHE_CLAVIER_START)) {
 			controleur_.demarrer();
 		}
-		if (clavier_.touchePresse(2)) {
+		if (clavier_.touchePresse(Constantes.TOUCHE_CLAVIER_STOP)) {
 			controleur_.stopper();
 		}
-		if (clavier_.touchePresse(3)) {
+		if (clavier_.touchePresse(Constantes.TOUCHE_CLAVIER_INC)) {
 			controleur_.incrementer();
 		}
-		if (clavier_.touchePresse(4)) {
+		if (clavier_.touchePresse(Constantes.TOUCHE_CLAVIER_DEC)) {
 			controleur_.decrementer();
 		}
 
