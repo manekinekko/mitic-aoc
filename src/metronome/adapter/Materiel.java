@@ -1,6 +1,7 @@
 package metronome.adapter;
 
 import metronome.core.EmetteurSonore;
+import metronome.core.HorlogeWrapper;
 import metronome.core.IEmetteurSonore;
 import metronome.core.IHorloge;
 
@@ -10,18 +11,18 @@ public class Materiel {
 	private static IClavier clavier_;
 	// private static IMolette molette_;
 	private static IEmetteurSonore emetteurSonore_;
-
 	// private static IAfficheur afficheur_;
 
-	private Materiel() {
+	private Materiel() {}
+
+	public static IHorloge getHorloge() {
+		if (horloge_ == null) {
+			horloge_ = new HorlogeWrapper();
+		}
+
+		return horloge_;
 	}
 
-	/*
-	 * public static IHorloge getHorloge(){ if ( horloge_ == null ){ horloge_ =
-	 * new Horloge(); }
-	 * 
-	 * return horloge_; }
-	 */
 	public static IClavier getClavier() {
 		if (clavier_ == null) {
 			clavier_ = new Clavier();

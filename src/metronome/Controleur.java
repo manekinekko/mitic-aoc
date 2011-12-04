@@ -1,6 +1,7 @@
 package metronome;
 
 import metronome.adapter.Adapter;
+import metronome.adapter.Materiel;
 import metronome.command.MetronomeCommandeFactory;
 import metronome.core.HorlogeWrapper;
 import metronome.core.IHorloge;
@@ -27,7 +28,7 @@ public class Controleur implements IControleur, Constantes {
 	 * @since 1.0
 	 */
 	public Controleur() {
-		horloge_ = new HorlogeWrapper();
+		horloge_ = Materiel.getHorloge();
 		moteur_ = new MoteurMetronome(this, horloge_);
 		ihm_ = new IHM(this);
 		changeEtatBouttonsIncDec();
