@@ -9,7 +9,7 @@ import javax.sound.sampled.DataLine.Info;
 
 /**
  * Classe permettant de jouer un fichier Wav. Implémente l'interface
- * IEmetteurSonore pour sa méthode "emettreClick", utilisé pour jouer le tic du
+ * IEmetteurSonore pour sa méthode "emettreClick", utilisée pour jouer le tic du
  * métronome.
  * 
  * @author <ul>
@@ -30,8 +30,8 @@ public class EmetteurSonore implements IEmetteurSonore {
 	private SourceDataLine source_;
 
 	/**
-	 * Constructeur d'EmetteurSonore. Permet d'initialiser les différent objet
-	 * nécessaire à la lecture du fichier wav.
+	 * Constructeur d'EmetteurSonore. Permet d'initialiser les différents objets
+	 * nécessaires à la lecture du fichier wav.
 	 * 
 	 * @since 1.0
 	 */
