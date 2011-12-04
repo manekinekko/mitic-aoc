@@ -7,7 +7,7 @@ import metronome.core.IMoteurMetronome;
 import metronome.core.MoteurMetronome;
 
 /**
- * Cette classe fait office de contrôleur dans ls pattern MVC. Elle permet à
+ * Cette classe fait office de contrôleur dans le pattern MVC. Elle permet à
  * l'IHM d'interagir sur le moteur et vice versa.
  * 
  * @author <ul>
@@ -26,7 +26,7 @@ public class Controleur implements IControleur, Constantes {
 	private IHorloge horloge_;
 
 	/**
-	 * Constructeur du controleur
+	 * Constructeur du contrôleur
 	 * 
 	 * @since 1.0
 	 */
