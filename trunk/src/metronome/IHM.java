@@ -4,7 +4,6 @@ import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.Box;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -12,11 +11,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSlider;
 import javax.swing.JTextField;
-
 import metronome.adapter.Clavier;
 import metronome.adapter.Materiel;
 import metronome.command.CommandeChangeListener;
-import metronome.command.CommandeMouseListener;
 import metronome.command.MetronomeCommandeFactory;
 import metronome.core.EmetteurSonore;
 
@@ -90,28 +87,32 @@ public class IHM extends JFrame implements IIHM {
 		
 		//TODO utiliser la factory pour créer cette commande?
 		inc_.addActionListener(new ActionListener() {
-
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				clavier.setTouchePresse(3);
 			}
-
 		});
 		dec_ = new JButton("DEC");
 		//TODO utiliser la factory pour créer cette commande?
 		dec_.addActionListener(new ActionListener() {
-
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				controleur_.decrementer();
+				clavier.setTouchePresse(4);
 			}
-
 		});
 
-		demarrer_.addMouseListener(new CommandeMouseListener(
-				MetronomeCommandeFactory.creerCommandeDemarrer(controleur_)));
-		stop_.addMouseListener(new CommandeMouseListener(
-				MetronomeCommandeFactory.creerCommandeStop(controleur_)));
+		demarrer_.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				clavier.setTouchePresse(1);
+			}
+		});
+		stop_.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				clavier.setTouchePresse(2);
+			}
+		});
 
 		stop_.setEnabled(false);
 		inc_.setEnabled(false);
