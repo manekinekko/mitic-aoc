@@ -2,13 +2,14 @@ package metronome.adapter;
 
 import metronome.Controleur;
 import metronome.command.MetronomeCommandeFactory;
+import metronome.command.MetronomeCommandeFactory;
 import metronome.core.HorlogeWrapper;
 import metronome.core.IHorloge;
 
 /**
  * Classe servant d'adaptateur (voir pattern adapter). Elle permet d'aller lire
- * les Ã©tats des boutons et de la molette. En fonction de ceux-ci, elle execute
- * les commandes appropriÃ©es.
+ * les états des boutons et de la molette. En fonction de ceux-ci, elle execute
+ * les commandes appropriées.
  * 
  * @author <ul>
  *         <li>Wassim Chegham (<a
@@ -31,6 +32,7 @@ public class Adapter {
 	public Adapter(Controleur controleur) {
 		horloge_ = new HorlogeWrapper();
 		horloge_.activerPeriodiquement(MetronomeCommandeFactory.creerCommandeLireClavier(controleur), 0.2F);
+		(new HorlogeWrapper()).activerPeriodiquement(MetronomeCommandeFactory.creerCommandeSlider(controleur), 0.2F);
 	}
 
 }

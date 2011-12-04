@@ -6,14 +6,15 @@ import javax.swing.Timer;
 import metronome.command.ICommand;
 
 /**
- * Implémentation de l'interface IHorloge. Utilise le timer fourni par swing
- * pour activer des commandes de manière périodique, ou avec délai. Cette classe
- * est utilisée par HorlogeWrapper, qui sert de façade.
+ * Implémentation de l'interface {@link IHorloge}. Utilise le timer fournis par swing
+ * pour activer des commandes de manière périodique, ou avec délai. 
+ * Cette classe sert d'Apatee pour {@link HorlogeWrapper}.
  * 
  * 
  * @author <ul><li>Wassim Chegham (<a href=mailto:contact@cheghamwassim.com>contact@cheghamwassim.com</a>)</li><li>Gurval Le Bouter (<a href=mailto:gurval.lebouter@gmail.com>gurval.lebouter@gmail.com</a>)</li></ul>
  * @version 1.0
  * @see IHorloge
+ * @role Horloge Adaptee
  */
 public class TimerSwing implements IHorloge {
 
@@ -45,7 +46,7 @@ public class TimerSwing implements IHorloge {
 		});
 		timerPeriodique_.setDelay((int) periodeEnMilliSeconde);
 		timerPeriodique_.setRepeats(true);
-		timerPeriodique_.setActionCommand("dd");
+		timerPeriodique_.setActionCommand("Command");
 		timerPeriodique_.restart();
 	}
 
