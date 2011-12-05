@@ -24,14 +24,14 @@ public class MoteurMetronomeTest {
 	@Test
 	public void testTempo() {
 		//test des valeurs min
-		metronome.setTempo(0);
+		metronome.setTempo(MoteurMetronome.MIN_TEMPO);
 		assertEquals(MoteurMetronome.MIN_TEMPO, metronome.getTempo());
 		
 		metronome.setTempo(-1000);
 		assertEquals(MoteurMetronome.MIN_TEMPO, metronome.getTempo());
 		
 		//test des valeur max
-		metronome.setTempo(1000);
+		metronome.setTempo(MoteurMetronome.MAX_TEMPO);
 		assertEquals(MoteurMetronome.MAX_TEMPO, metronome.getTempo());
 		
 		metronome.setTempo(2000);
@@ -39,7 +39,7 @@ public class MoteurMetronomeTest {
 		
 		//test de la valeur moyenne
 		int tempo = (int) ((MoteurMetronome.MAX_TEMPO + MoteurMetronome.MIN_TEMPO) / 2);
-		metronome.setTempo(500);
+		metronome.setTempo(tempo);
 		assertEquals(tempo, metronome.getTempo());
 	}
 
