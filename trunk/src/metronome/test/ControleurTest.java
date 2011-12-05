@@ -106,7 +106,7 @@ public class ControleurTest {
 	public void testUpdateCommandeSlider() {
 		int tempo = moteur_.getTempo();
 		ihm_.afficherTempo(tempo);
-		assertEquals(tempo+"", ihm_.getLCD().getText());
+		assertEquals(tempo+"", ihm_.getLCD().getTextTempo());
 	}
 
 	@Test

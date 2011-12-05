@@ -26,6 +26,7 @@ public class Controleur implements IControleur, Constantes {
 	private IMoteurMetronome moteur_;
 	private IIHM ihm_;
 	private IHorloge horloge_;
+	@SuppressWarnings("unused")
 	private Adapter adapter_;
 
 	/**
@@ -37,7 +38,9 @@ public class Controleur implements IControleur, Constantes {
 		horloge_ = Materiel.getHorloge();
 		moteur_ = new MoteurMetronome(this, horloge_);
 		ihm_ = new IHM(this);
-		changeEtatBouttonsIncDec();
+		changeEtatBouttonsIncDec_();
+		ihm_.afficherMesure(moteur_.getTempsParMesure());
+		
 		// mise a jour de la valeur du tempo de l'IHM
 		new CommandeSlider(this).execute();
 		adapter_ = new Adapter(this);
@@ -67,11 +70,11 @@ public class Controleur implements IControleur, Constantes {
 		if (moteur_.getEtatMarche()) {
 			ihm_.setEtatBouton(ihm_.getBoutonStop(), true);
 			ihm_.setEtatBouton(ihm_.getBoutonDemarrer(), false);
-			changeEtatBouttonsIncDec();
+			changeEtatBouttonsIncDec_();
 		} else {
 			ihm_.setEtatBouton(ihm_.getBoutonStop(), false);
 			ihm_.setEtatBouton(ihm_.getBoutonDemarrer(), true);
-			changeEtatBouttonsIncDec();
+			changeEtatBouttonsIncDec_();
 		}
 	}
 
@@ -80,9 +83,10 @@ public class Controleur implements IControleur, Constantes {
 	 */
 	@Override
 	public void incrementer() {
-		moteur_.setTempsParMesure(moteur_.getTempsParMesure() + 1);
-		System.out.println("Controleur.incrementer(), temps:" + moteur_.getTempsParMesure());
-		changeEtatBouttonsIncDec();
+		int mesure = moteur_.getTempsParMesure() + 1;
+		moteur_.setTempsParMesure(mesure);
+		ihm_.afficherMesure(mesure);
+		changeEtatBouttonsIncDec_();
 	}
 
 	/**
@@ -90,8 +94,10 @@ public class Controleur implements IControleur, Constantes {
 	 */
 	@Override
 	public void decrementer() {
-		moteur_.setTempsParMesure(moteur_.getTempsParMesure() - 1);
-		changeEtatBouttonsIncDec();
+		int mesure = moteur_.getTempsParMesure() - 1;
+		moteur_.setTempsParMesure(mesure);
+		ihm_.afficherMesure(mesure);
+		changeEtatBouttonsIncDec_();
 	}
 
 	/**
@@ -100,7 +106,7 @@ public class Controleur implements IControleur, Constantes {
 	 * 
 	 * @since 1.0
 	 */
-	private void changeEtatBouttonsIncDec() {
+	private void changeEtatBouttonsIncDec_() {
 		if (moteur_.getTempsParMesure() > MoteurMetronome.MIN_TEMPS_PAR_MESURE) {
 			ihm_.setEtatBouton(ihm_.getBoutonDec(), true);
 		} else {
@@ -184,10 +190,11 @@ public class Controleur implements IControleur, Constantes {
 	@Override
 	public void marquerTemps() {
 
-		ihm_.allumerLED(1);
-		horloge_.activerApresDelai(new CommandeEteindreLed(this, 1),
+		horloge_.activerApresDelai(new CommandeEteindreLed(this, Constantes.LED_1),
 				0.15F);
+		ihm_.allumerLED(Constantes.LED_1);
 		ihm_.emettreClick();
+		ihm_.showNextMesureIndicator();
 	}
 
 	/**
@@ -203,9 +210,9 @@ public class Controleur implements IControleur, Constantes {
 	 */
 	@Override
 	public void marquerMesure() {
-		ihm_.allumerLED(2);
-		horloge_.activerApresDelai(new CommandeEteindreLed(this, 2),
+		horloge_.activerApresDelai(new CommandeEteindreLed(this, Constantes.LED_2),
 				0.15F);
+		ihm_.allumerLED(Constantes.LED_2);
 	}
 
 }

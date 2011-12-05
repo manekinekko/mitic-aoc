@@ -32,7 +32,7 @@ public class Adapter {
 	public Adapter(Controleur controleur) {
 		horloge_ = new HorlogeWrapper();
 		horloge_.activerPeriodiquement(new CommandeLireClavier(controleur), 0.2F);
-		horloge_.activerPeriodiquement(new CommandeSlider(controleur), 0.8F);
+		horloge_.activerPeriodiquement(new CommandeSlider(controleur), 0.2F);
 	}
 
 }

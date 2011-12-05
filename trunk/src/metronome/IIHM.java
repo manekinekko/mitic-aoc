@@ -2,7 +2,6 @@ package metronome;
 
 import javax.swing.JButton;
 import javax.swing.JSlider;
-import javax.swing.JTextField;
 
 /**
  * Cette interface définit les méthodes à implémenter par la classe IHM.
@@ -26,6 +25,14 @@ public interface IIHM {
 	 */
 	public void afficherTempo(int tempo);
 
+	/**
+	 * Afficher la mesure dans le cadre prévu.
+	 * 
+	 * @param mesure La valeur de la mesure à afficher.
+	 * @since 2.0
+	 */
+	public void afficherMesure(int mesure);
+	
 	/**
 	 * Permet d'activer ou désactiver un bouton.
 	 * 
@@ -121,7 +128,7 @@ public interface IIHM {
 	 * @return l'objet représentant le LCD
 	 * @since 1.0
 	 */
-	public JTextField getLCD();
+	public LCD getLCD();
 
 	/**
 	 * Récupère l'objet LED
@@ -130,6 +137,10 @@ public interface IIHM {
 	 * @return La LED à récupérer
 	 * @since 1.0
 	 */
-	public LED getLED(int num);
+	public ILED getLED(int num);
 
+	/**
+	 * Afficher l'indicateur suivant des mesures.
+	 */
+	public void showNextMesureIndicator();
 }

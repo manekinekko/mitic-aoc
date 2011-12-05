@@ -1,9 +1,12 @@
 package metronome;
 
-import javax.swing.JRadioButton;
+import java.awt.Color;
+import java.awt.Graphics;
 
+import javax.swing.JPanel;
 /**
- * La classe LED permet d'afficher une LED (ici représentée par un RadioButton)
+ * 
+ * Cette classe permet d'afficher une LED (ici représentée par un Graphics)
  * et de l'allumer et de l'éteindre.
  * 
  * @author <ul>
@@ -15,19 +18,49 @@ import javax.swing.JRadioButton;
  * @see ILED
  * @version 1.0
  */
-public class LED extends JRadioButton implements ILED {
+public class LED extends JPanel implements ILED {
 
 	private static final long serialVersionUID = 1L;
-	private boolean estAllumee_;
+	private Color bg_;
+	private boolean estAllume_;
+
+	public LED() {
+		super();
+		estAllume_ = false;
+		setBounds(0, 0, 200, 100);
+		setBackground(Color.white);
+		bg_ = Color.white;
+	}
 
 	/**
-	 * Constructeur de la LED.
-	 * 
-	 * @since 1.0
+	 * {@inheritDoc}
 	 */
-	public LED() {
-		setSelected(false);
-		estAllumee_ = false;
+	@Override
+	protected void paintComponent(Graphics g) {
+		super.paintComponent(g);
+		int radius = 10;
+		g.setColor(bg_);
+		g.fillOval(0, 0, radius * 2, radius * 2);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public void allumer() {
+		estAllume_ = true;
+		bg_ = Color.red;
+		repaint();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public void eteindre() {
+		estAllume_ = false;
+		bg_ = Color.white;
+		repaint();
 	}
 
 	/**
@@ -35,24 +68,6 @@ public class LED extends JRadioButton implements ILED {
 	 */
 	@Override
 	public boolean estAllumee() {
-		return estAllumee_;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	public synchronized void allumer() {
-		setSelected(true);
-		estAllumee_ = true;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	public synchronized void eteindre() {
-		setSelected(false);
-		estAllumee_ = false;
+		return estAllume_;
 	}
 }
