@@ -3,8 +3,8 @@ package metronome;
 import javax.swing.JRadioButton;
 
 /**
- * Cette classe permet d'afficher une LED (ici représentée par un RadioButton)
- * et de l'allumer et de l'éteindre.
+ * Cette classe permet d'afficher une LED (ici représentée par un RadioButton),
+ * de l'allumer et de l'éteindre. 
  * 
  * @author <ul>
  *         <li>Wassim Chegham (<a
@@ -14,6 +14,7 @@ import javax.swing.JRadioButton;
  *         </ul>
  * @see ILED
  * @version 1.0
+ * @deprecated Cette classe a été dépréciée depuis la version 2.0. Merci d'utiliser la classe {@link LED}
  */
 public class LED_old extends JRadioButton implements ILED {
 
