@@ -1,11 +1,11 @@
 package metronome.core;
 
-import java.io.File;
+import java.net.URL;
 import javax.sound.sampled.AudioFormat;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.SourceDataLine;
 import javax.sound.sampled.DataLine.Info;
+import javax.sound.sampled.SourceDataLine;
 
 /**
  * Classe permettant de jouer un fichier Wav. Implémente l'interface
@@ -23,11 +23,11 @@ import javax.sound.sampled.DataLine.Info;
  */
 public class EmetteurSonore implements IEmetteurSonore {
 
-	private String filename_;
 	private AudioInputStream audioInputStream_;
 	private AudioFormat audioFormat_;
 	private Info info_;
 	private SourceDataLine source_;
+	private URL waveFile_;
 
 	/**
 	 * Constructeur d'EmetteurSonore. Permet d'initialiser les différents objets
@@ -36,15 +36,7 @@ public class EmetteurSonore implements IEmetteurSonore {
 	 * @since 1.0
 	 */
 	public EmetteurSonore() {
-		filename_ = "src/metronome/assets/tac.wav";
-		try {
-			audioInputStream_ = AudioSystem.getAudioInputStream(new File(filename_));
-			audioFormat_ = audioInputStream_.getFormat();
-			info_ = new Info(SourceDataLine.class, audioFormat_);
-			source_ = (SourceDataLine) AudioSystem.getLine(info_);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		waveFile_ = getClass().getResource("/metronome/assets/tac.wav");
 	}
 
 	/**
@@ -73,7 +65,8 @@ public class EmetteurSonore implements IEmetteurSonore {
 		 */
 		public void run() {
 			try {
-				audioInputStream_ = AudioSystem.getAudioInputStream(new File(filename_));
+				
+				audioInputStream_ = AudioSystem.getAudioInputStream(waveFile_);
 				audioFormat_ = audioInputStream_.getFormat();
 				info_ = new Info(SourceDataLine.class, audioFormat_);
 				source_ = (SourceDataLine) AudioSystem.getLine(info_);
